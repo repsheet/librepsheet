@@ -18,10 +18,15 @@
         <h1>librepsheet</h1>
         <p>The Repsheet core library</p>
 
+	<p>
+	  <a href="http://travis-ci.org/repsheet/librepsheet?branch=master"><img src="https://secure.travis-ci.org/repsheet/librepsheet.png" /></a>
+	  <a href="https://scan.coverity.com/projects/1749"><img src="https://scan.coverity.com/projects/1749/badge.svg?flat=1"/></a>
+	</p>
+
         <p class="view">
+	  <a href="http://repsheet.github.io/librepsheet/docs/index.html">View the Documentation
+	  <a href="http://repsheet.github.io/librepsheet/coverage/src/librepsheet.c.gcov.html">View the Test Coverage
 	  <a href="https://github.com/repsheet/librepsheet">View the Project on GitHub <small>repsheet/librepsheet</small></a>
-	  <a href="http://repsheet.github.io/librepsheet/docs/index.html">View the Documentation <small>repsheet/librepsheet</small></a>
-	  <a href="http://repsheet.github.io/librepsheet/coverage/src/librepsheet.c.gcov.html">View the Test Coverage <small>repsheet/librepsheet</small></a>
 	</p>
 
         <ul>
@@ -33,12 +38,20 @@
 
       <section>
         <h3>
-          <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors">
+          <a name="about-librepsheet" class="anchor" href="#about-librepsheet">
 	    <span class="octicon octicon-link"></span>
 	  </a>
-	  Authors and Contributors
-	  @abedra
+	  About librepsheet
 	</h3>
+
+	<p>
+	  librepsheet was built to provide a common abstraction layer
+	  for the Repsheet logic. Since Repsheet targets more than one
+	  web server and shares functionality with the backend this
+	  library provides one commmon place for business logic. This
+	  allows for implementations of web and backend Repsheet
+	  modules to focus on just the platform specific details.
+	</p>
       </section>
 
       <footer>
