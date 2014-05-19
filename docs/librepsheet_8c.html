@@ -94,46 +94,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a87bece9af30d393f29b7214b76db0dc4"><td class="memItemLeft" align="right" valign="top">redisContext *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a87bece9af30d393f29b7214b76db0dc4">get_redis_context</a> (char *host, int port, int timeout)</td></tr>
-<tr class="separator:a87bece9af30d393f29b7214b76db0dc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add945c1f25695e24b55dfc81c1fcd230"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#add945c1f25695e24b55dfc81c1fcd230">mark_actor</a> (redisContext *context, char *actor)</td></tr>
-<tr class="separator:add945c1f25695e24b55dfc81c1fcd230"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54b9de20f943b87630f79a8194f05161"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a54b9de20f943b87630f79a8194f05161">blacklist_actor</a> (redisContext *context, char *actor)</td></tr>
-<tr class="separator:a54b9de20f943b87630f79a8194f05161"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a446bc77acdedc08d54cac1c959befc7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a446bc77acdedc08d54cac1c959befc7e">whitelist_actor</a> (redisContext *context, char *actor)</td></tr>
-<tr class="separator:a446bc77acdedc08d54cac1c959befc7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7f34882a252ff795e6b349dbd91f1fe"><td class="memItemLeft" align="right" valign="top">redisContext *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#ab7f34882a252ff795e6b349dbd91f1fe">get_redis_context</a> (const char *host, int port, int timeout)</td></tr>
+<tr class="separator:ab7f34882a252ff795e6b349dbd91f1fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2dae93c744c9c72a083645fc4f20b13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#ac2dae93c744c9c72a083645fc4f20b13">mark_actor</a> (redisContext *context, const char *actor)</td></tr>
+<tr class="separator:ac2dae93c744c9c72a083645fc4f20b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6216e57911149671eeaa428c5db59e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#ac6216e57911149671eeaa428c5db59e1">blacklist_actor</a> (redisContext *context, const char *actor)</td></tr>
+<tr class="separator:ac6216e57911149671eeaa428c5db59e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a515e0fca88ef6e6a9499f48d8c8eee94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a515e0fca88ef6e6a9499f48d8c8eee94">whitelist_actor</a> (redisContext *context, const char *actor)</td></tr>
+<tr class="separator:a515e0fca88ef6e6a9499f48d8c8eee94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9ea4a0aabcdd7da13b9450f58502fbd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#aa9ea4a0aabcdd7da13b9450f58502fbd">is_on_repsheet</a> (redisContext *context, const char *actor)</td></tr>
 <tr class="separator:aa9ea4a0aabcdd7da13b9450f58502fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af374a2eb63275bbb9167eb3ed1bdca83"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#af374a2eb63275bbb9167eb3ed1bdca83">is_blacklisted</a> (redisContext *context, const char *actor)</td></tr>
 <tr class="separator:af374a2eb63275bbb9167eb3ed1bdca83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af96b11b9747115fe3e3f0ec3959f2d0c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#af96b11b9747115fe3e3f0ec3959f2d0c">is_whitelisted</a> (redisContext *context, const char *actor)</td></tr>
 <tr class="separator:af96b11b9747115fe3e3f0ec3959f2d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07330d46c77f86a11f1ec2cd3bbe15cb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a07330d46c77f86a11f1ec2cd3bbe15cb">is_historical_offender</a> (redisContext *context, char *actor)</td></tr>
-<tr class="separator:a07330d46c77f86a11f1ec2cd3bbe15cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac718aa83a718fbba7ba098559379d66c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#ac718aa83a718fbba7ba098559379d66c">is_previously_scored</a> (redisContext *context, char *actor)</td></tr>
-<tr class="separator:ac718aa83a718fbba7ba098559379d66c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae512d633c16f0a174adb4980521efd3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#aae512d633c16f0a174adb4980521efd3">expire</a> (redisContext *context, char *actor, char *label, int expiry)</td></tr>
-<tr class="separator:aae512d633c16f0a174adb4980521efd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17fb20c893eba90173804dd9017f3a18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a17fb20c893eba90173804dd9017f3a18">blacklist_and_expire</a> (redisContext *context, char *actor, int expiry, char *reason)</td></tr>
-<tr class="separator:a17fb20c893eba90173804dd9017f3a18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a336a101dd266347339379432717019"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a4a336a101dd266347339379432717019">is_historical_offender</a> (redisContext *context, const char *actor)</td></tr>
+<tr class="separator:a4a336a101dd266347339379432717019"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a934142beddb8e60605dd47e6375d6991"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a934142beddb8e60605dd47e6375d6991">expire</a> (redisContext *context, const char *actor, char *label, int expiry)</td></tr>
+<tr class="separator:a934142beddb8e60605dd47e6375d6991"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24df3b8f80c0b420725db2b6d93a3ff9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a24df3b8f80c0b420725db2b6d93a3ff9">blacklist_and_expire</a> (redisContext *context, const char *actor, int expiry, char *reason)</td></tr>
+<tr class="separator:a24df3b8f80c0b420725db2b6d93a3ff9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd571ac81451726775969f39aa29a3e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#acd571ac81451726775969f39aa29a3e3">record</a> (redisContext *context, char *timestamp, const char *user_agent, const char *http_method, char *uri, char *arguments, int redis_max_length, int redis_expiry, const char *actor)</td></tr>
 <tr class="separator:acd571ac81451726775969f39aa29a3e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a08e2c199becb1c8e7a6164ded91336"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a0a08e2c199becb1c8e7a6164ded91336">remote_address</a> (char *connected_address, const char *xff_header)</td></tr>
 <tr class="separator:a0a08e2c199becb1c8e7a6164ded91336"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24f7c3a3b9c73195749994adb06be98a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a24f7c3a3b9c73195749994adb06be98a">matches</a> (char *waf_events)</td></tr>
-<tr class="separator:a24f7c3a3b9c73195749994adb06be98a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ae75e4643e3bd4e0dfe842c3e6a7ac6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a0ae75e4643e3bd4e0dfe842c3e6a7ac6">process_mod_security_headers</a> (char *waf_events, char *events[])</td></tr>
-<tr class="separator:a0ae75e4643e3bd4e0dfe842c3e6a7ac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9a10478bbabe195f4c358d9ed5c046d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#af9a10478bbabe195f4c358d9ed5c046d">increment_rule_count</a> (redisContext *context, char *actor, char *rule)</td></tr>
-<tr class="separator:af9a10478bbabe195f4c358d9ed5c046d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ebd7d432393c6cf84100d85331e0316"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a3ebd7d432393c6cf84100d85331e0316">modsecurity_total</a> (char *waf_score)</td></tr>
-<tr class="separator:a3ebd7d432393c6cf84100d85331e0316"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02163fd174338c06c213a0776e599b49"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a02163fd174338c06c213a0776e599b49">matches</a> (const char *waf_events)</td></tr>
+<tr class="separator:a02163fd174338c06c213a0776e599b49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5c0775ae93b9b9356a031eac2ad97ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#af5c0775ae93b9b9356a031eac2ad97ca">process_mod_security_headers</a> (const char *waf_events, char *events[])</td></tr>
+<tr class="separator:af5c0775ae93b9b9356a031eac2ad97ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26c3fd8c42822d0451b31af06e5082cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a26c3fd8c42822d0451b31af06e5082cf">increment_rule_count</a> (redisContext *context, const char *actor, char *rule)</td></tr>
+<tr class="separator:a26c3fd8c42822d0451b31af06e5082cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99238d947bc3af597e27a5f185b65c6c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a99238d947bc3af597e27a5f185b65c6c">modsecurity_total</a> (const char *waf_score)</td></tr>
+<tr class="separator:a99238d947bc3af597e27a5f185b65c6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Aaron Bedra </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>4/12/2014 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a54b9de20f943b87630f79a8194f05161"></a>
+<a class="anchor" id="ac6216e57911149671eeaa428c5db59e1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -146,7 +144,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>actor</em>&#160;</td>
         </tr>
         <tr>
@@ -167,7 +165,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a17fb20c893eba90173804dd9017f3a18"></a>
+<a class="anchor" id="a24df3b8f80c0b420725db2b6d93a3ff9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -180,7 +178,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>actor</em>, </td>
         </tr>
         <tr>
@@ -215,7 +213,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aae512d633c16f0a174adb4980521efd3"></a>
+<a class="anchor" id="a934142beddb8e60605dd47e6375d6991"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -228,7 +226,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>actor</em>, </td>
         </tr>
         <tr>
@@ -263,14 +261,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a87bece9af30d393f29b7214b76db0dc4"></a>
+<a class="anchor" id="ab7f34882a252ff795e6b349dbd91f1fe"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">redisContext* get_redis_context </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>host</em>, </td>
         </tr>
         <tr>
@@ -305,7 +303,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af9a10478bbabe195f4c358d9ed5c046d"></a>
+<a class="anchor" id="a26c3fd8c42822d0451b31af06e5082cf"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -318,7 +316,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>actor</em>, </td>
         </tr>
         <tr>
@@ -381,7 +379,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a07330d46c77f86a11f1ec2cd3bbe15cb"></a>
+<a class="anchor" id="a4a336a101dd266347339379432717019"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -394,7 +392,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>actor</em>&#160;</td>
         </tr>
         <tr>
@@ -450,40 +448,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac718aa83a718fbba7ba098559379d66c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int is_previously_scored </td>
-          <td>(</td>
-          <td class="paramtype">redisContext *&#160;</td>
-          <td class="paramname"><em>context</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>actor</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Checks to see if an actor has been previously scored</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
-    <tr><td class="paramname">actor</td><td>the addres of the actor in question </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a class="anchor" id="af96b11b9747115fe3e3f0ec3959f2d0c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -519,7 +483,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="add945c1f25695e24b55dfc81c1fcd230"></a>
+<a class="anchor" id="ac2dae93c744c9c72a083645fc4f20b13"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -532,7 +496,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>actor</em>&#160;</td>
         </tr>
         <tr>
@@ -553,14 +517,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a24f7c3a3b9c73195749994adb06be98a"></a>
+<a class="anchor" id="a02163fd174338c06c213a0776e599b49"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int matches </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>waf_events</em></td><td>)</td>
           <td></td>
         </tr>
@@ -576,14 +540,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a3ebd7d432393c6cf84100d85331e0316"></a>
+<a class="anchor" id="a99238d947bc3af597e27a5f185b65c6c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int modsecurity_total </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>waf_score</em></td><td>)</td>
           <td></td>
         </tr>
@@ -599,14 +563,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a0ae75e4643e3bd4e0dfe842c3e6a7ac6"></a>
+<a class="anchor" id="af5c0775ae93b9b9356a031eac2ad97ca"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void process_mod_security_headers </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>waf_events</em>, </td>
         </tr>
         <tr>
@@ -750,7 +714,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a446bc77acdedc08d54cac1c959befc7e"></a>
+<a class="anchor" id="a515e0fca88ef6e6a9499f48d8c8eee94"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -763,7 +727,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>actor</em>&#160;</td>
         </tr>
         <tr>
@@ -787,7 +751,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu May 15 2014 17:33:58 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 19 2014 14:45:08 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
