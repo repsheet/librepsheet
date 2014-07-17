@@ -7,18 +7,20 @@
 
 var indexSectionsWithContent =
 {
-  0: "begilmprw",
-  1: "l",
-  2: "begimprw",
-  3: "l"
+  0: "abegilmprw",
+  1: "r",
+  2: "l",
+  3: "abegimprw",
+  4: "l"
 };
 
 var indexSectionNames =
 {
   0: "all",
-  1: "files",
-  2: "functions",
-  3: "pages"
+  1: "classes",
+  2: "files",
+  3: "functions",
+  4: "pages"
 };
 
 function convertToId(search)
