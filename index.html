@@ -1,93 +1,59 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Librepsheet by repsheet</title>
 
-<html lang="en">
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>librepsheet 1.0.0</h1>
+        <p>The Repsheet core library</p>
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - librepsheet test coverage</title>
-  <link rel="stylesheet" type="text/css" href="gcov.css">
-</head>
+	<p>
+	  <a href="http://travis-ci.org/repsheet/librepsheet?branch=master"><img src="https://secure.travis-ci.org/repsheet/librepsheet.png" /></a>
+	  <a href="https://scan.coverity.com/projects/1749"><img src="https://scan.coverity.com/projects/1749/badge.svg?flat=1"/></a>
+	</p>
 
-<body>
+        <p class="view">
+	  <a href="http://repsheet.github.io/librepsheet/docs/index.html">View the Documentation</a><br />
+	  <a href="http://repsheet.github.io/librepsheet/coverage/src/librepsheet.c.gcov.html">View the Test Coverage</a><br />
+	  <a href="https://github.com/repsheet/librepsheet/releases/tag/1.0.0">View the Release on GitHub</a>
+	</p>
+      </header>
 
-  <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title">LCOV - code coverage report</td></tr>
-    <tr><td class="ruler"><img src="glass.png" width=3 height=3 alt=""></td></tr>
+      <section>
+        <h3>
+          <a name="about-librepsheet" class="anchor" href="#about-librepsheet">
+	    <span class="octicon octicon-link"></span>
+	  </a>
+	  About librepsheet
+	</h3>
 
-    <tr>
-      <td width="100%">
-        <table cellpadding=1 border=0 width="100%">
-          <tr>
-            <td width="10%" class="headerItem">Current view:</td>
-            <td width="35%" class="headerValue">top level</td>
-            <td width="5%"></td>
-            <td width="15%"></td>
-            <td width="10%" class="headerCovTableHead">Hit</td>
-            <td width="10%" class="headerCovTableHead">Total</td>
-            <td width="15%" class="headerCovTableHead">Coverage</td>
-          </tr>
-          <tr>
-            <td class="headerItem">Test:</td>
-            <td class="headerValue">librepsheet test coverage</td>
-            <td></td>
-            <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">153</td>
-            <td class="headerCovTableEntry">153</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
-          </tr>
-          <tr>
-            <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-07-16</td>
-            <td></td>
-            <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">20</td>
-            <td class="headerCovTableEntry">20</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
-          </tr>
-          <tr><td><img src="glass.png" width=3 height=3 alt=""></td></tr>
-        </table>
-      </td>
-    </tr>
+	<p>
+	  librepsheet was built to provide a common abstraction layer
+	  for the Repsheet logic. Since Repsheet targets more than one
+	  web server and shares functionality with the backend this
+	  library provides one commmon place for business logic. This
+	  allows for implementations of web and backend Repsheet
+	  modules to focus on just the platform specific details.
+	</p>
+      </section>
 
-    <tr><td class="ruler"><img src="glass.png" width=3 height=3 alt=""></td></tr>
-  </table>
+      <footer>
+        <p>Copyright &copy; 2014 Aaron Bedra</p>
+      </footer>
+    </div>
 
-  <center>
-  <table width="80%" cellpadding=1 cellspacing=1 border=0>
+    <script src="javascripts/scale.fix.js"></script>
 
-    <tr>
-      <td width="50%"><br></td>
-      <td width="10%"></td>
-      <td width="10%"></td>
-      <td width="10%"></td>
-      <td width="10%"></td>
-      <td width="10%"></td>
-    </tr>
-
-    <tr>
-      <td class="tableHead">Directory <span class="tableHeadSort"><img src="glass.png" width=10 height=14 alt="Sort by name" title="Sort by name" border=0></span></td>
-      <td class="tableHead" colspan=3>Line Coverage <span class="tableHeadSort"><a href="index-sort-l.html"><img src="updown.png" width=10 height=14 alt="Sort by line coverage" title="Sort by line coverage" border=0></a></span></td>
-      <td class="tableHead" colspan=2>Functions <span class="tableHeadSort"><a href="index-sort-f.html"><img src="updown.png" width=10 height=14 alt="Sort by function coverage" title="Sort by function coverage" border=0></a></span></td>
-    </tr>
-    <tr>
-      <td class="coverFile"><a href="src/index.html">src</a></td>
-      <td class="coverBar" align="center">
-        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline"><img src="emerald.png" width=100 height=10 alt="100.0%"></td></tr></table>
-      </td>
-      <td class="coverPerHi">100.0&nbsp;%</td>
-      <td class="coverNumHi">153 / 153</td>
-      <td class="coverPerHi">100.0&nbsp;%</td>
-      <td class="coverNumHi">20 / 20</td>
-    </tr>
-  </table>
-  </center>
-  <br>
-
-  <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="ruler"><img src="glass.png" width=3 height=3 alt=""></td></tr>
-    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php">LCOV version 1.10</a></td></tr>
-  </table>
-  <br>
-
-</body>
+  </body>
 </html>

@@ -39,7 +39,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -70,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,35 +90,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">librepsheet.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;string.h&gt;</code><br/>
-<code>#include &lt;pcre.h&gt;</code><br/>
-<code>#include &quot;hiredis/hiredis.h&quot;</code><br/>
-<code>#include &quot;repsheet.h&quot;</code><br/>
+<div class="textblock"><code>#include &quot;repsheet.h&quot;</code><br/>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ab7f34882a252ff795e6b349dbd91f1fe"><td class="memItemLeft" align="right" valign="top">redisContext *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#ab7f34882a252ff795e6b349dbd91f1fe">get_redis_context</a> (const char *host, int port, int timeout)</td></tr>
 <tr class="separator:ab7f34882a252ff795e6b349dbd91f1fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a124471fada6b7344c3d45d3272205175"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a124471fada6b7344c3d45d3272205175">mark_actor</a> (redisContext *context, const char *actor, int type)</td></tr>
-<tr class="separator:a124471fada6b7344c3d45d3272205175"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafd711d798ed4645610f9c649f16068f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#aafd711d798ed4645610f9c649f16068f">blacklist_actor</a> (redisContext *context, const char *actor, int type)</td></tr>
-<tr class="separator:aafd711d798ed4645610f9c649f16068f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63a437ed5f1303dd048630da7cab25fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a63a437ed5f1303dd048630da7cab25fd">whitelist_actor</a> (redisContext *context, const char *actor, int type)</td></tr>
-<tr class="separator:a63a437ed5f1303dd048630da7cab25fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2598504735917937d9d771936fc63b44"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a2598504735917937d9d771936fc63b44">is_ip_marked</a> (redisContext *context, const char *actor)</td></tr>
-<tr class="separator:a2598504735917937d9d771936fc63b44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3c76171d35f7e1c0f239f4d15f5d30e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#aa3c76171d35f7e1c0f239f4d15f5d30e">is_ip_blacklisted</a> (redisContext *context, const char *actor)</td></tr>
-<tr class="separator:aa3c76171d35f7e1c0f239f4d15f5d30e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5de100d66236b6d1d93909c7e394335f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a5de100d66236b6d1d93909c7e394335f">is_ip_whitelisted</a> (redisContext *context, const char *actor)</td></tr>
-<tr class="separator:a5de100d66236b6d1d93909c7e394335f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a484cb171baff267f90e45de41c93932b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a484cb171baff267f90e45de41c93932b">is_user_marked</a> (redisContext *context, const char *actor)</td></tr>
-<tr class="separator:a484cb171baff267f90e45de41c93932b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8bfa3a1e7e0bbaadc148ebc30a4be72"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#ad8bfa3a1e7e0bbaadc148ebc30a4be72">is_user_blacklisted</a> (redisContext *context, const char *actor)</td></tr>
-<tr class="separator:ad8bfa3a1e7e0bbaadc148ebc30a4be72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aecd0f8da691932bf0d84aaa1fb92c96d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#aecd0f8da691932bf0d84aaa1fb92c96d">is_user_whitelisted</a> (redisContext *context, const char *actor)</td></tr>
-<tr class="separator:aecd0f8da691932bf0d84aaa1fb92c96d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58a58cec8fe954bd150162085636cf6b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a58a58cec8fe954bd150162085636cf6b">actor_status</a> (redisContext *context, const char *actor, int type)</td></tr>
-<tr class="separator:a58a58cec8fe954bd150162085636cf6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2dae93c744c9c72a083645fc4f20b13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#ac2dae93c744c9c72a083645fc4f20b13">mark_actor</a> (redisContext *context, const char *actor)</td></tr>
+<tr class="separator:ac2dae93c744c9c72a083645fc4f20b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6216e57911149671eeaa428c5db59e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#ac6216e57911149671eeaa428c5db59e1">blacklist_actor</a> (redisContext *context, const char *actor)</td></tr>
+<tr class="separator:ac6216e57911149671eeaa428c5db59e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a515e0fca88ef6e6a9499f48d8c8eee94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a515e0fca88ef6e6a9499f48d8c8eee94">whitelist_actor</a> (redisContext *context, const char *actor)</td></tr>
+<tr class="separator:a515e0fca88ef6e6a9499f48d8c8eee94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9ea4a0aabcdd7da13b9450f58502fbd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#aa9ea4a0aabcdd7da13b9450f58502fbd">is_on_repsheet</a> (redisContext *context, const char *actor)</td></tr>
+<tr class="separator:aa9ea4a0aabcdd7da13b9450f58502fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af374a2eb63275bbb9167eb3ed1bdca83"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#af374a2eb63275bbb9167eb3ed1bdca83">is_blacklisted</a> (redisContext *context, const char *actor)</td></tr>
+<tr class="separator:af374a2eb63275bbb9167eb3ed1bdca83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af96b11b9747115fe3e3f0ec3959f2d0c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#af96b11b9747115fe3e3f0ec3959f2d0c">is_whitelisted</a> (redisContext *context, const char *actor)</td></tr>
+<tr class="separator:af96b11b9747115fe3e3f0ec3959f2d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a336a101dd266347339379432717019"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a4a336a101dd266347339379432717019">is_historical_offender</a> (redisContext *context, const char *actor)</td></tr>
 <tr class="separator:a4a336a101dd266347339379432717019"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a934142beddb8e60605dd47e6375d6991"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a934142beddb8e60605dd47e6375d6991">expire</a> (redisContext *context, const char *actor, char *label, int expiry)</td></tr>
@@ -143,49 +131,7 @@ Functions</h2></td></tr>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Aaron Bedra </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>5/19/2014 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a58a58cec8fe954bd150162085636cf6b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int actor_status </td>
-          <td>(</td>
-          <td class="paramtype">redisContext *&#160;</td>
-          <td class="paramname"><em>context</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>actor</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>type</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Top level API for determining the status of an actor</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
-    <tr><td class="paramname">actor</td><td>the IP address or user value of the actor </td></tr>
-    <tr><td class="paramname">type</td><td>IP or USER</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>an integer status </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="aafd711d798ed4645610f9c649f16068f"></a>
+<a class="anchor" id="ac6216e57911149671eeaa428c5db59e1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -199,13 +145,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>actor</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>type</em>&#160;</td>
+          <td class="paramname"><em>actor</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -218,8 +158,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
-    <tr><td class="paramname">actor</td><td>the actors user data or ip address </td></tr>
-    <tr><td class="paramname">type</td><td>IP or USER </td></tr>
+    <tr><td class="paramname">actor</td><td>the IP address of the actor </td></tr>
   </table>
   </dd>
 </dl>
@@ -405,6 +344,41 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="af374a2eb63275bbb9167eb3ed1bdca83"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int is_blacklisted </td>
+          <td>(</td>
+          <td class="paramtype">redisContext *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>actor</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Checks to see if an actor is on the Repsheet blacklist</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
+    <tr><td class="paramname">actor</td><td>the IP address of the actor</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>TRUE if yes, FALSE if no </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a4a336a101dd266347339379432717019"></a>
 <div class="memitem">
 <div class="memproto">
@@ -439,12 +413,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aa3c76171d35f7e1c0f239f4d15f5d30e"></a>
+<a class="anchor" id="aa9ea4a0aabcdd7da13b9450f58502fbd"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int is_ip_blacklisted </td>
+          <td class="memname">int is_on_repsheet </td>
           <td>(</td>
           <td class="paramtype">redisContext *&#160;</td>
           <td class="paramname"><em>context</em>, </td>
@@ -462,7 +436,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Checks to see if an ip is on the Repsheet blacklist</p>
+<p>Checks to see if an actor is on the Repsheet</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
@@ -474,12 +448,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2598504735917937d9d771936fc63b44"></a>
+<a class="anchor" id="af96b11b9747115fe3e3f0ec3959f2d0c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int is_ip_marked </td>
+          <td class="memname">int is_whitelisted </td>
           <td>(</td>
           <td class="paramtype">redisContext *&#160;</td>
           <td class="paramname"><em>context</em>, </td>
@@ -497,7 +471,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Checks to see if an ip is on the Repsheet</p>
+<p>Checks to see if an actor is on the Repsheet whitelist</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
@@ -509,147 +483,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a5de100d66236b6d1d93909c7e394335f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int is_ip_whitelisted </td>
-          <td>(</td>
-          <td class="paramtype">redisContext *&#160;</td>
-          <td class="paramname"><em>context</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>actor</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Checks to see if an ip is on the Repsheet whitelist</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
-    <tr><td class="paramname">actor</td><td>the IP address of the actor</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>TRUE if yes, FALSE if no </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ad8bfa3a1e7e0bbaadc148ebc30a4be72"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int is_user_blacklisted </td>
-          <td>(</td>
-          <td class="paramtype">redisContext *&#160;</td>
-          <td class="paramname"><em>context</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>actor</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Checks to see if a user is on the Repsheet blacklist</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
-    <tr><td class="paramname">actor</td><td>the user</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>TRUE if yes, FALSE if no </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a484cb171baff267f90e45de41c93932b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int is_user_marked </td>
-          <td>(</td>
-          <td class="paramtype">redisContext *&#160;</td>
-          <td class="paramname"><em>context</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>actor</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Checks to see if a user is on the Repsheet</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
-    <tr><td class="paramname">actor</td><td>the user</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>TRUE if yes, FALSE if no </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="aecd0f8da691932bf0d84aaa1fb92c96d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int is_user_whitelisted </td>
-          <td>(</td>
-          <td class="paramtype">redisContext *&#160;</td>
-          <td class="paramname"><em>context</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>actor</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Checks to see if a user is on the Repsheet whitelist</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
-    <tr><td class="paramname">actor</td><td>the user</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>TRUE if yes, FALSE if no </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a124471fada6b7344c3d45d3272205175"></a>
+<a class="anchor" id="ac2dae93c744c9c72a083645fc4f20b13"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -663,13 +497,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>actor</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>type</em>&#160;</td>
+          <td class="paramname"><em>actor</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -682,8 +510,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
-    <tr><td class="paramname">actor</td><td>the actors user data or ip address </td></tr>
-    <tr><td class="paramname">type</td><td>IP or USER </td></tr>
+    <tr><td class="paramname">actor</td><td>the IP address of the actor </td></tr>
   </table>
   </dd>
 </dl>
@@ -887,7 +714,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a63a437ed5f1303dd048630da7cab25fd"></a>
+<a class="anchor" id="a515e0fca88ef6e6a9499f48d8c8eee94"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -901,13 +728,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>actor</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>type</em>&#160;</td>
+          <td class="paramname"><em>actor</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -920,8 +741,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
-    <tr><td class="paramname">actor</td><td>the actors user data or ip address </td></tr>
-    <tr><td class="paramname">type</td><td>IP or USER </td></tr>
+    <tr><td class="paramname">actor</td><td>the IP address of the actor </td></tr>
   </table>
   </dd>
 </dl>
@@ -931,7 +751,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 16 2014 22:06:33 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 19 2014 15:33:24 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
