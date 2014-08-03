@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['record',['record',['../librepsheet_8c.html#acd571ac81451726775969f39aa29a3e3',1,'librepsheet.c']]],
-  ['remote_5faddress',['remote_address',['../librepsheet_8c.html#a0a08e2c199becb1c8e7a6164ded91336',1,'librepsheet.c']]],
-  ['repsheet_5frule_5ft',['repsheet_rule_t',['../structrepsheet__rule__t.html',1,'']]]
+  ['process_5fmod_5fsecurity_5fheaders',['process_mod_security_headers',['../librepsheet_8c.html#af5c0775ae93b9b9356a031eac2ad97ca',1,'librepsheet.c']]]
 ];

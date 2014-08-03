@@ -100,12 +100,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Functions</h2></td></tr>
 <tr class="memitem:ab7f34882a252ff795e6b349dbd91f1fe"><td class="memItemLeft" align="right" valign="top">redisContext *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#ab7f34882a252ff795e6b349dbd91f1fe">get_redis_context</a> (const char *host, int port, int timeout)</td></tr>
 <tr class="separator:ab7f34882a252ff795e6b349dbd91f1fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a124471fada6b7344c3d45d3272205175"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a124471fada6b7344c3d45d3272205175">mark_actor</a> (redisContext *context, const char *actor, int type)</td></tr>
-<tr class="separator:a124471fada6b7344c3d45d3272205175"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafd711d798ed4645610f9c649f16068f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#aafd711d798ed4645610f9c649f16068f">blacklist_actor</a> (redisContext *context, const char *actor, int type)</td></tr>
-<tr class="separator:aafd711d798ed4645610f9c649f16068f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63a437ed5f1303dd048630da7cab25fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a63a437ed5f1303dd048630da7cab25fd">whitelist_actor</a> (redisContext *context, const char *actor, int type)</td></tr>
-<tr class="separator:a63a437ed5f1303dd048630da7cab25fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d158856bf16b96a5379d081a0b0b492"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a1d158856bf16b96a5379d081a0b0b492">check_connection</a> (redisContext *context)</td></tr>
+<tr class="separator:a1d158856bf16b96a5379d081a0b0b492"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2aa4083abb56c0db4ef4cab7fb433f2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#aa2aa4083abb56c0db4ef4cab7fb433f2">mark_actor</a> (redisContext *context, const char *actor, int type)</td></tr>
+<tr class="separator:aa2aa4083abb56c0db4ef4cab7fb433f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab18861d1ec12c211f51a387d35610b64"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#ab18861d1ec12c211f51a387d35610b64">blacklist_actor</a> (redisContext *context, const char *actor, int type)</td></tr>
+<tr class="separator:ab18861d1ec12c211f51a387d35610b64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a0e3ea3c24464f394de10aca575f7f6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a8a0e3ea3c24464f394de10aca575f7f6">whitelist_actor</a> (redisContext *context, const char *actor, int type)</td></tr>
+<tr class="separator:a8a0e3ea3c24464f394de10aca575f7f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2598504735917937d9d771936fc63b44"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a2598504735917937d9d771936fc63b44">is_ip_marked</a> (redisContext *context, const char *actor)</td></tr>
 <tr class="separator:a2598504735917937d9d771936fc63b44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3c76171d35f7e1c0f239f4d15f5d30e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#aa3c76171d35f7e1c0f239f4d15f5d30e">is_ip_blacklisted</a> (redisContext *context, const char *actor)</td></tr>
@@ -122,20 +124,22 @@ Functions</h2></td></tr>
 <tr class="separator:a58a58cec8fe954bd150162085636cf6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a336a101dd266347339379432717019"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a4a336a101dd266347339379432717019">is_historical_offender</a> (redisContext *context, const char *actor)</td></tr>
 <tr class="separator:a4a336a101dd266347339379432717019"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a934142beddb8e60605dd47e6375d6991"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a934142beddb8e60605dd47e6375d6991">expire</a> (redisContext *context, const char *actor, char *label, int expiry)</td></tr>
-<tr class="separator:a934142beddb8e60605dd47e6375d6991"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24df3b8f80c0b420725db2b6d93a3ff9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a24df3b8f80c0b420725db2b6d93a3ff9">blacklist_and_expire</a> (redisContext *context, const char *actor, int expiry, char *reason)</td></tr>
-<tr class="separator:a24df3b8f80c0b420725db2b6d93a3ff9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd571ac81451726775969f39aa29a3e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#acd571ac81451726775969f39aa29a3e3">record</a> (redisContext *context, char *timestamp, const char *user_agent, const char *http_method, char *uri, char *arguments, int redis_max_length, int redis_expiry, const char *actor)</td></tr>
-<tr class="separator:acd571ac81451726775969f39aa29a3e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a857247d0756ac1de6b71494a164253d2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a857247d0756ac1de6b71494a164253d2">expire</a> (redisContext *context, const char *actor, char *label, int expiry)</td></tr>
+<tr class="separator:a857247d0756ac1de6b71494a164253d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5546e84ce8cede4d3b2a146573e930c4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a5546e84ce8cede4d3b2a146573e930c4">blacklist_and_expire</a> (redisContext *context, const char *actor, int expiry, char *reason)</td></tr>
+<tr class="separator:a5546e84ce8cede4d3b2a146573e930c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63d793297b611870e50e0f6235dfc4d3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a63d793297b611870e50e0f6235dfc4d3">blacklist_reason</a> (redisContext *context, const char *actor, char *value)</td></tr>
+<tr class="separator:a63d793297b611870e50e0f6235dfc4d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3e27019da29785c8894d0e200fd5be1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#ac3e27019da29785c8894d0e200fd5be1">record</a> (redisContext *context, char *timestamp, const char *user_agent, const char *http_method, char *uri, char *arguments, int redis_max_length, int redis_expiry, const char *actor)</td></tr>
+<tr class="separator:ac3e27019da29785c8894d0e200fd5be1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a08e2c199becb1c8e7a6164ded91336"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a0a08e2c199becb1c8e7a6164ded91336">remote_address</a> (char *connected_address, const char *xff_header)</td></tr>
 <tr class="separator:a0a08e2c199becb1c8e7a6164ded91336"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02163fd174338c06c213a0776e599b49"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a02163fd174338c06c213a0776e599b49">matches</a> (const char *waf_events)</td></tr>
 <tr class="separator:a02163fd174338c06c213a0776e599b49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5c0775ae93b9b9356a031eac2ad97ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#af5c0775ae93b9b9356a031eac2ad97ca">process_mod_security_headers</a> (const char *waf_events, char *events[])</td></tr>
 <tr class="separator:af5c0775ae93b9b9356a031eac2ad97ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26c3fd8c42822d0451b31af06e5082cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a26c3fd8c42822d0451b31af06e5082cf">increment_rule_count</a> (redisContext *context, const char *actor, char *rule)</td></tr>
-<tr class="separator:a26c3fd8c42822d0451b31af06e5082cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add5cc9253b42b76ce2bbbb58a5f3771d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#add5cc9253b42b76ce2bbbb58a5f3771d">increment_rule_count</a> (redisContext *context, const char *actor, char *rule)</td></tr>
+<tr class="separator:add5cc9253b42b76ce2bbbb58a5f3771d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99238d947bc3af597e27a5f185b65c6c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="librepsheet_8c.html#a99238d947bc3af597e27a5f185b65c6c">modsecurity_total</a> (const char *waf_score)</td></tr>
 <tr class="separator:a99238d947bc3af597e27a5f185b65c6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -185,12 +189,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aafd711d798ed4645610f9c649f16068f"></a>
+<a class="anchor" id="ab18861d1ec12c211f51a387d35610b64"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void blacklist_actor </td>
+          <td class="memname">int blacklist_actor </td>
           <td>(</td>
           <td class="paramtype">redisContext *&#160;</td>
           <td class="paramname"><em>context</em>, </td>
@@ -219,19 +223,20 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
     <tr><td class="paramname">actor</td><td>the actors user data or ip address </td></tr>
-    <tr><td class="paramname">type</td><td>IP or USER </td></tr>
+    <tr><td class="paramname">type</td><td>IP or USER</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>an integer result </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a24df3b8f80c0b420725db2b6d93a3ff9"></a>
+<a class="anchor" id="a5546e84ce8cede4d3b2a146573e930c4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void blacklist_and_expire </td>
+          <td class="memname">int blacklist_and_expire </td>
           <td>(</td>
           <td class="paramtype">redisContext *&#160;</td>
           <td class="paramname"><em>context</em>, </td>
@@ -267,19 +272,86 @@ Functions</h2></td></tr>
     <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
     <tr><td class="paramname">actor</td><td>the IP address of the actor </td></tr>
     <tr><td class="paramname">expiry</td><td>the length until the record expires </td></tr>
-    <tr><td class="paramname">reason</td><td>the reason for blacklisting the actor </td></tr>
+    <tr><td class="paramname">reason</td><td>the reason for blacklisting the actor</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>an integer response </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a934142beddb8e60605dd47e6375d6991"></a>
+<a class="anchor" id="a63d793297b611870e50e0f6235dfc4d3"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void expire </td>
+          <td class="memname">int blacklist_reason </td>
+          <td>(</td>
+          <td class="paramtype">redisContext *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>actor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Fetches the reason code for the actor. Works with both IP and user data.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
+    <tr><td class="paramname">actor</td><td>the IP address of the actor </td></tr>
+    <tr><td class="paramname">value</td><td>the variable to store the reason code</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an integer response and sets value if found </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1d158856bf16b96a5379d081a0b0b492"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int check_connection </td>
+          <td>(</td>
+          <td class="paramtype">redisContext *&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Tests the connection to ensure it is working properly</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>the Redis connection</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an integer response with the connection status </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a857247d0756ac1de6b71494a164253d2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int expire </td>
           <td>(</td>
           <td class="paramtype">redisContext *&#160;</td>
           <td class="paramname"><em>context</em>, </td>
@@ -315,10 +387,11 @@ Functions</h2></td></tr>
     <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
     <tr><td class="paramname">actor</td><td>the IP address of the actor </td></tr>
     <tr><td class="paramname">label</td><td>the label associated with the actor </td></tr>
-    <tr><td class="paramname">expiry</td><td>the length until the record expires </td></tr>
+    <tr><td class="paramname">expiry</td><td>the length until the record expires</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>an integer response </dd></dl>
 
 </div>
 </div>
@@ -364,12 +437,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a26c3fd8c42822d0451b31af06e5082cf"></a>
+<a class="anchor" id="add5cc9253b42b76ce2bbbb58a5f3771d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void increment_rule_count </td>
+          <td class="memname">int increment_rule_count </td>
           <td>(</td>
           <td class="paramtype">redisContext *&#160;</td>
           <td class="paramname"><em>context</em>, </td>
@@ -398,10 +471,11 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
     <tr><td class="paramname">actor</td><td>the IP address of the actor </td></tr>
-    <tr><td class="paramname">rule</td><td>the ModSecurity rule number </td></tr>
+    <tr><td class="paramname">rule</td><td>the ModSecurity rule number</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>an integer response </dd></dl>
 
 </div>
 </div>
@@ -432,10 +506,11 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
-    <tr><td class="paramname">actor</td><td>the addres of the actor in question </td></tr>
+    <tr><td class="paramname">actor</td><td>the addres of the actor in question</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>an integer response </dd></dl>
 
 </div>
 </div>
@@ -470,7 +545,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>TRUE if yes, FALSE if no </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>TRUE if yes, FALSE if no, DISCONNECTED if error </dd></dl>
 
 </div>
 </div>
@@ -505,7 +580,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>TRUE if yes, FALSE if no </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>TRUE if yes, FALSE if no, DISCONNECTED if error </dd></dl>
 
 </div>
 </div>
@@ -540,7 +615,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>TRUE if yes, FALSE if no </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>TRUE if yes, FALSE if no, DISCONNECTED if error </dd></dl>
 
 </div>
 </div>
@@ -575,7 +650,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>TRUE if yes, FALSE if no </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>TRUE if yes, FALSE if no, DISCONNECTED if error </dd></dl>
 
 </div>
 </div>
@@ -610,7 +685,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>TRUE if yes, FALSE if no </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>TRUE if yes, FALSE if no, DISCONNECTED if error </dd></dl>
 
 </div>
 </div>
@@ -645,16 +720,16 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>TRUE if yes, FALSE if no </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>TRUE if yes, FALSE if no, DISCONNECTED if error </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a124471fada6b7344c3d45d3272205175"></a>
+<a class="anchor" id="aa2aa4083abb56c0db4ef4cab7fb433f2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void mark_actor </td>
+          <td class="memname">int mark_actor </td>
           <td>(</td>
           <td class="paramtype">redisContext *&#160;</td>
           <td class="paramname"><em>context</em>, </td>
@@ -683,10 +758,11 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
     <tr><td class="paramname">actor</td><td>the actors user data or ip address </td></tr>
-    <tr><td class="paramname">type</td><td>IP or USER </td></tr>
+    <tr><td class="paramname">type</td><td>IP or USER</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>an integer result </dd></dl>
 
 </div>
 </div>
@@ -770,12 +846,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="acd571ac81451726775969f39aa29a3e3"></a>
+<a class="anchor" id="ac3e27019da29785c8894d0e200fd5be1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void record </td>
+          <td class="memname">int record </td>
           <td>(</td>
           <td class="paramtype">redisContext *&#160;</td>
           <td class="paramname"><em>context</em>, </td>
@@ -846,10 +922,11 @@ Functions</h2></td></tr>
     <tr><td class="paramname">arguments</td><td>the query string </td></tr>
     <tr><td class="paramname">redis_max_length</td><td>the maximum number of requests to keep in Redis </td></tr>
     <tr><td class="paramname">redis_expiry</td><td>the time to live for the entry </td></tr>
-    <tr><td class="paramname">actor</td><td>the ip address of the actor </td></tr>
+    <tr><td class="paramname">actor</td><td>the ip address of the actor</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>an integer response </dd></dl>
 
 </div>
 </div>
@@ -887,12 +964,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a63a437ed5f1303dd048630da7cab25fd"></a>
+<a class="anchor" id="a8a0e3ea3c24464f394de10aca575f7f6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void whitelist_actor </td>
+          <td class="memname">int whitelist_actor </td>
           <td>(</td>
           <td class="paramtype">redisContext *&#160;</td>
           <td class="paramname"><em>context</em>, </td>
@@ -921,17 +998,18 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
     <tr><td class="paramname">actor</td><td>the actors user data or ip address </td></tr>
-    <tr><td class="paramname">type</td><td>IP or USER </td></tr>
+    <tr><td class="paramname">type</td><td>IP or USER</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>an integer result </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 16 2014 22:12:43 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Aug 3 2014 09:39:15 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
