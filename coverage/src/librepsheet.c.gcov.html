@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-08-03</td>
+            <td class="headerValue">2014-08-04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">22</td>
@@ -156,7 +156,7 @@
 <span class="lineNum">      94 </span><span class="lineNoCov">          0 :       return DISCONNECTED;</span>
 <span class="lineNum">      95 </span>            :     } else {
 <span class="lineNum">      96 </span><span class="lineCov">          1 :       freeReplyObject(reply);</span>
-<span class="lineNum">      97 </span><span class="lineCov">          1 :       return OK;</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :       return LIBREPSHEET_OK;</span>
 <span class="lineNum">      98 </span>            :     }
 <span class="lineNum">      99 </span>            :   } else {
 <span class="lineNum">     100 </span>            :     return DISCONNECTED;
@@ -181,7 +181,7 @@
 <span class="lineNum">     119 </span><span class="lineCov">          4 :     reply = redisCommand(context, &quot;SET %s:repsheet true&quot;, actor);</span>
 <span class="lineNum">     120 </span><span class="lineCov">          4 :     if (reply) {</span>
 <span class="lineNum">     121 </span><span class="lineCov">          4 :       freeReplyObject(reply);</span>
-<span class="lineNum">     122 </span><span class="lineCov">          4 :       return OK;</span>
+<span class="lineNum">     122 </span><span class="lineCov">          4 :       return LIBREPSHEET_OK;</span>
 <span class="lineNum">     123 </span>            :     } else {
 <span class="lineNum">     124 </span>            :       return DISCONNECTED;
 <span class="lineNum">     125 </span>            :     }
@@ -190,7 +190,7 @@
 <span class="lineNum">     128 </span><span class="lineCov">          3 :     reply = redisCommand(context, &quot;SADD repsheet:users %s&quot;, actor);</span>
 <span class="lineNum">     129 </span><span class="lineCov">          3 :     if (reply) {</span>
 <span class="lineNum">     130 </span><span class="lineCov">          3 :       freeReplyObject(reply);</span>
-<span class="lineNum">     131 </span><span class="lineCov">          3 :       return OK;</span>
+<span class="lineNum">     131 </span><span class="lineCov">          3 :       return LIBREPSHEET_OK;</span>
 <span class="lineNum">     132 </span>            :     } else {
 <span class="lineNum">     133 </span>            :       return DISCONNECTED;
 <span class="lineNum">     134 </span>            :     }
@@ -219,7 +219,7 @@
 <span class="lineNum">     157 </span><span class="lineCov">          3 :     reply = redisCommand(context, &quot;SET %s:repsheet:blacklist true&quot;, actor);</span>
 <span class="lineNum">     158 </span><span class="lineCov">          3 :     if (reply) {</span>
 <span class="lineNum">     159 </span><span class="lineCov">          3 :       freeReplyObject(reply);</span>
-<span class="lineNum">     160 </span><span class="lineCov">          3 :       return OK;</span>
+<span class="lineNum">     160 </span><span class="lineCov">          3 :       return LIBREPSHEET_OK;</span>
 <span class="lineNum">     161 </span>            :     } else {
 <span class="lineNum">     162 </span>            :       return DISCONNECTED;
 <span class="lineNum">     163 </span>            :     }
@@ -228,7 +228,7 @@
 <span class="lineNum">     166 </span><span class="lineCov">          3 :     reply = redisCommand(context, &quot;SADD repsheet:users:blacklist %s&quot;, actor);</span>
 <span class="lineNum">     167 </span><span class="lineCov">          3 :     if (reply) {</span>
 <span class="lineNum">     168 </span><span class="lineCov">          3 :       freeReplyObject(reply);</span>
-<span class="lineNum">     169 </span><span class="lineCov">          3 :       return OK;</span>
+<span class="lineNum">     169 </span><span class="lineCov">          3 :       return LIBREPSHEET_OK;</span>
 <span class="lineNum">     170 </span>            :     } else {
 <span class="lineNum">     171 </span>            :       return DISCONNECTED;
 <span class="lineNum">     172 </span>            :     }
@@ -257,7 +257,7 @@
 <span class="lineNum">     195 </span><span class="lineCov">          3 :     reply = redisCommand(context, &quot;SET %s:repsheet:whitelist true&quot;, actor);</span>
 <span class="lineNum">     196 </span><span class="lineCov">          3 :     if (reply) {</span>
 <span class="lineNum">     197 </span><span class="lineCov">          3 :       freeReplyObject(reply);</span>
-<span class="lineNum">     198 </span><span class="lineCov">          3 :       return OK;</span>
+<span class="lineNum">     198 </span><span class="lineCov">          3 :       return LIBREPSHEET_OK;</span>
 <span class="lineNum">     199 </span>            :     } else {
 <span class="lineNum">     200 </span>            :       return DISCONNECTED;
 <span class="lineNum">     201 </span>            :     }
@@ -266,7 +266,7 @@
 <span class="lineNum">     204 </span><span class="lineCov">          3 :     reply = redisCommand(context, &quot;SADD repsheet:users:whitelist %s&quot;, actor);</span>
 <span class="lineNum">     205 </span><span class="lineCov">          3 :     if (reply) {</span>
 <span class="lineNum">     206 </span><span class="lineCov">          3 :       freeReplyObject(reply);</span>
-<span class="lineNum">     207 </span><span class="lineCov">          3 :       return OK;</span>
+<span class="lineNum">     207 </span><span class="lineCov">          3 :       return LIBREPSHEET_OK;</span>
 <span class="lineNum">     208 </span>            :     } else {
 <span class="lineNum">     209 </span>            :       return DISCONNECTED;
 <span class="lineNum">     210 </span>            :     }
@@ -522,7 +522,7 @@
 <span class="lineNum">     460 </span><span class="lineCov">          1 :   reply = redisCommand(context, &quot;EXPIRE %s:%s %d&quot;, actor, label, expiry);</span>
 <span class="lineNum">     461 </span><span class="lineCov">          1 :   if (reply) {</span>
 <span class="lineNum">     462 </span><span class="lineCov">          1 :     freeReplyObject(reply);</span>
-<span class="lineNum">     463 </span><span class="lineCov">          1 :     return OK;</span>
+<span class="lineNum">     463 </span><span class="lineCov">          1 :     return LIBREPSHEET_OK;</span>
 <span class="lineNum">     464 </span>            :   } else {
 <span class="lineNum">     465 </span>            :     return DISCONNECTED;
 <span class="lineNum">     466 </span>            :   }
@@ -551,7 +551,7 @@
 <span class="lineNum">     489 </span>            : 
 <span class="lineNum">     490 </span><span class="lineCov">          3 :   if (reply) {</span>
 <span class="lineNum">     491 </span><span class="lineCov">          3 :     freeReplyObject(reply);</span>
-<span class="lineNum">     492 </span><span class="lineCov">          3 :     return OK;</span>
+<span class="lineNum">     492 </span><span class="lineCov">          3 :     return LIBREPSHEET_OK;</span>
 <span class="lineNum">     493 </span>            :   } else {
 <span class="lineNum">     494 </span>            :     return DISCONNECTED;
 <span class="lineNum">     495 </span>            :   }
@@ -578,7 +578,7 @@
 <span class="lineNum">     516 </span><span class="lineCov">          1 :       strncpy(value, reply-&gt;str, s);</span>
 <span class="lineNum">     517 </span><span class="lineCov">          1 :       value[s] = '\0';</span>
 <span class="lineNum">     518 </span><span class="lineCov">          1 :       freeReplyObject(reply);</span>
-<span class="lineNum">     519 </span><span class="lineCov">          1 :       return OK;</span>
+<span class="lineNum">     519 </span><span class="lineCov">          1 :       return LIBREPSHEET_OK;</span>
 <span class="lineNum">     520 </span>            :     } else {
 <span class="lineNum">     521 </span><span class="lineCov">          1 :       freeReplyObject(reply);</span>
 <span class="lineNum">     522 </span><span class="lineCov">          1 :       return NIL;</span>
@@ -675,7 +675,7 @@
 <span class="lineNum">     613 </span><span class="lineCov">          7 :   if (reply) {</span>
 <span class="lineNum">     614 </span><span class="lineCov">          7 :     free(rec);</span>
 <span class="lineNum">     615 </span><span class="lineCov">          7 :     freeReplyObject(reply);</span>
-<span class="lineNum">     616 </span><span class="lineCov">          7 :     return OK;</span>
+<span class="lineNum">     616 </span><span class="lineCov">          7 :     return LIBREPSHEET_OK;</span>
 <span class="lineNum">     617 </span>            :   } else {
 <span class="lineNum">     618 </span><span class="lineNoCov">          0 :     free(rec);</span>
 <span class="lineNum">     619 </span><span class="lineNoCov">          0 :     return DISCONNECTED;</span>
@@ -802,7 +802,7 @@
 <span class="lineNum">     740 </span><span class="lineCov">          1 :   reply = redisCommand(context, &quot;ZINCRBY %s:detected 1 %s&quot;, actor, rule);</span>
 <span class="lineNum">     741 </span><span class="lineCov">          1 :   if (reply) {</span>
 <span class="lineNum">     742 </span><span class="lineCov">          1 :     freeReplyObject(reply);</span>
-<span class="lineNum">     743 </span><span class="lineCov">          1 :     return OK;</span>
+<span class="lineNum">     743 </span><span class="lineCov">          1 :     return LIBREPSHEET_OK;</span>
 <span class="lineNum">     744 </span>            :   } else {
 <span class="lineNum">     745 </span>            :     return DISCONNECTED;
 <span class="lineNum">     746 </span>            :   }
