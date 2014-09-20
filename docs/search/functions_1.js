@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['blacklist_5factor',['blacklist_actor',['../librepsheet_8c.html#ab18861d1ec12c211f51a387d35610b64',1,'librepsheet.c']]],
-  ['blacklist_5fand_5fexpire',['blacklist_and_expire',['../librepsheet_8c.html#a5546e84ce8cede4d3b2a146573e930c4',1,'librepsheet.c']]],
-  ['blacklist_5freason',['blacklist_reason',['../librepsheet_8c.html#a63d793297b611870e50e0f6235dfc4d3',1,'librepsheet.c']]]
+  ['blacklist_5factor',['blacklist_actor',['../librepsheet_8c.html#a58d0c2f2fbcd6bd33057f3fa8ef7139d',1,'librepsheet.c']]],
+  ['blacklist_5fand_5fexpire',['blacklist_and_expire',['../librepsheet_8c.html#ae442f01919c7bfb7c5a7fea6b6c02f69',1,'librepsheet.c']]]
 ];
