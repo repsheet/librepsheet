@@ -31,13 +31,13 @@
             <td class="headerValue">librepsheet test coverage</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">36</td>
-            <td class="headerCovTableEntry">36</td>
+            <td class="headerCovTableEntry">54</td>
+            <td class="headerCovTableEntry">54</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-10-09</td>
+            <td class="headerValue">2014-12-08</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -73,7 +73,7 @@
 <span class="lineNum">      11 </span>            :  * @date 10/09/2014
 <span class="lineNum">      12 </span>            :  */
 <span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span>            : int _string_to_integer(char *address);
+<span class="lineNum">      14 </span>            : int _string_to_integer(const char *address);
 <span class="lineNum">      15 </span>            : int _string_to_cidr(CIDR *cidr, char *block);
 <span class="lineNum">      16 </span>            : 
 <span class="lineNum">      17 </span>            : /**
@@ -84,82 +84,122 @@
 <span class="lineNum">      22 </span>            :  *
 <a name="23"><span class="lineNum">      23 </span>            :  * @returns 1 if in the block, 0 if not</a>
 <span class="lineNum">      24 </span>            :  */
-<span class="lineNum">      25 </span><span class="lineCov">          8 : int cidr_contains(char *block, char *address)</span>
+<span class="lineNum">      25 </span><span class="lineCov">         20 : int cidr_contains(char *block, const char *address)</span>
 <span class="lineNum">      26 </span>            : {
-<span class="lineNum">      27 </span><span class="lineCov">          8 :   if (block == NULL || address == NULL) {</span>
+<span class="lineNum">      27 </span><span class="lineCov">         20 :   if (block == NULL || address == NULL) {</span>
 <span class="lineNum">      28 </span>            :     return NIL;
 <span class="lineNum">      29 </span>            :   }
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">          8 :   CIDR *cidr = malloc(sizeof(*cidr));</span>
-<span class="lineNum">      32 </span><span class="lineCov">          8 :   int result = _string_to_cidr(cidr, block);</span>
-<span class="lineNum">      33 </span><span class="lineCov">          8 :   if (result == BAD_ADDRESS || result == BAD_CIDR_BLOCK) {</span>
-<span class="lineNum">      34 </span>            :     return result;
-<span class="lineNum">      35 </span>            :   }
-<span class="lineNum">      36 </span>            : 
-<span class="lineNum">      37 </span><span class="lineCov">          6 :   int lower = cidr-&gt;address;</span>
-<span class="lineNum">      38 </span><span class="lineCov">          6 :   int upper = lower + (pow(2, (32 - cidr-&gt;mask)) -1);</span>
-<span class="lineNum">      39 </span><span class="lineCov">          6 :   int ip = _string_to_integer(address);</span>
-<span class="lineNum">      40 </span>            : 
-<span class="lineNum">      41 </span><span class="lineCov">          6 :   free(cidr);</span>
-<span class="lineNum">      42 </span>            : 
-<span class="lineNum">      43 </span><span class="lineCov">          6 :   if (cidr-&gt;address == BAD_ADDRESS || ip == BAD_ADDRESS) {</span>
-<span class="lineNum">      44 </span>            :     return BAD_ADDRESS;
+<span class="lineNum">      31 </span><span class="lineCov">         20 :   CIDR *cidr = malloc(sizeof(*cidr));</span>
+<span class="lineNum">      32 </span><span class="lineCov">         20 :   int result = _string_to_cidr(cidr, block);</span>
+<span class="lineNum">      33 </span><span class="lineCov">         20 :   if (result == BAD_ADDRESS || result == BAD_CIDR_BLOCK) {</span>
+<span class="lineNum">      34 </span><span class="lineCov">          4 :     free(cidr);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          4 :     return result;</span>
+<span class="lineNum">      36 </span>            :   }
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span><span class="lineCov">         16 :   int lower = cidr-&gt;address;</span>
+<span class="lineNum">      39 </span><span class="lineCov">         16 :   int upper = lower + (pow(2, (32 - cidr-&gt;mask)) -1);</span>
+<span class="lineNum">      40 </span><span class="lineCov">         16 :   int ip = _string_to_integer(address);</span>
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span><span class="lineCov">         16 :   if (cidr-&gt;address == BAD_ADDRESS || ip == BAD_ADDRESS) {</span>
+<span class="lineNum">      43 </span><span class="lineCov">          2 :     free(cidr);</span>
+<span class="lineNum">      44 </span><span class="lineCov">          2 :     return BAD_ADDRESS;</span>
 <span class="lineNum">      45 </span>            :   }
 <span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span><span class="lineCov">          4 :   return ((lower &lt;= ip) &amp;&amp; (ip &lt;= upper));</span>
-<a name="48"><span class="lineNum">      48 </span>            : }</a>
-<span class="lineNum">      49 </span>            : 
-<span class="lineNum">      50 </span><span class="lineCov">          8 : int _string_to_cidr(CIDR *cidr, char *block)</span>
-<span class="lineNum">      51 </span>            : {
-<span class="lineNum">      52 </span><span class="lineCov">          8 :   char dup[strlen(block)];</span>
-<span class="lineNum">      53 </span><span class="lineCov">          8 :   memcpy(dup, block, strlen(block));</span>
-<span class="lineNum">      54 </span>            : 
-<span class="lineNum">      55 </span><span class="lineCov">          8 :   cidr-&gt;address_string = strtok(dup,&quot;/&quot;);</span>
-<span class="lineNum">      56 </span><span class="lineCov">          8 :   if (strlen(cidr-&gt;address_string) &lt; 8 || strlen(cidr-&gt;address_string) &gt; 16) {</span>
-<span class="lineNum">      57 </span>            :     return BAD_CIDR_BLOCK;
-<span class="lineNum">      58 </span>            :   }
-<span class="lineNum">      59 </span>            : 
-<span class="lineNum">      60 </span><span class="lineCov">          7 :   cidr-&gt;mask = strtol(strtok(NULL,&quot;/&quot;), 0, 10);</span>
-<span class="lineNum">      61 </span><span class="lineCov">          7 :   if (cidr-&gt;mask &lt; 0 || cidr-&gt;mask &gt; 32) {</span>
-<span class="lineNum">      62 </span>            :     return BAD_CIDR_BLOCK;
-<span class="lineNum">      63 </span>            :   }
-<span class="lineNum">      64 </span>            : 
-<span class="lineNum">      65 </span><span class="lineCov">          6 :   cidr-&gt;address = _string_to_integer(cidr-&gt;address_string);</span>
-<span class="lineNum">      66 </span><span class="lineCov">          6 :   if (cidr-&gt;address == BAD_ADDRESS) {</span>
-<span class="lineNum">      67 </span>            :     return BAD_ADDRESS;
-<span class="lineNum">      68 </span>            :   }
-<span class="lineNum">      69 </span>            : 
-<span class="lineNum">      70 </span><span class="lineCov">          6 :   return LIBREPSHEET_OK;</span>
-<a name="71"><span class="lineNum">      71 </span>            : }</a>
-<span class="lineNum">      72 </span>            : 
-<span class="lineNum">      73 </span><span class="lineCov">         12 : int _string_to_integer(char *address)</span>
-<span class="lineNum">      74 </span>            : {
-<span class="lineNum">      75 </span><span class="lineCov">         12 :   char dup[strlen(address)];</span>
-<span class="lineNum">      76 </span><span class="lineCov">         12 :   memcpy(dup, address, strlen(address));</span>
-<span class="lineNum">      77 </span>            : 
-<span class="lineNum">      78 </span>            :   int first, second, third, fourth;
-<span class="lineNum">      79 </span>            : 
-<span class="lineNum">      80 </span><span class="lineCov">         12 :   first = strtol(strtok(dup, &quot;.&quot;), 0, 10);</span>
-<span class="lineNum">      81 </span><span class="lineCov">         12 :   second = strtol(strtok(NULL, &quot;.&quot;), 0, 10);</span>
-<span class="lineNum">      82 </span><span class="lineCov">         12 :   third = strtol(strtok(NULL, &quot;.&quot;), 0, 10);</span>
-<span class="lineNum">      83 </span><span class="lineCov">         12 :   fourth = strtol(strtok(NULL, &quot;.&quot;), 0, 10);</span>
-<span class="lineNum">      84 </span>            : 
-<span class="lineNum">      85 </span>            :   int i;
-<span class="lineNum">      86 </span><span class="lineCov">         12 :   int octets[] = {first, second, third, fourth};</span>
-<span class="lineNum">      87 </span>            : 
-<span class="lineNum">      88 </span><span class="lineCov">         58 :   for (i = 0; i &lt; 4; i++) {</span>
-<span class="lineNum">      89 </span><span class="lineCov">         48 :     if (octets[i] &lt; 0 || octets[i] &gt; 256) {</span>
-<span class="lineNum">      90 </span>            :       return BAD_ADDRESS;
-<span class="lineNum">      91 </span>            :     }
-<span class="lineNum">      92 </span>            :   }
-<span class="lineNum">      93 </span>            : 
-<span class="lineNum">      94 </span><span class="lineCov">         20 :   int ip_integer = ((first &lt;&lt; 24) &amp; 0xFF000000)</span>
-<span class="lineNum">      95 </span><span class="lineCov">         10 :     | ((second &lt;&lt; 16) &amp; 0xFF0000)</span>
-<span class="lineNum">      96 </span><span class="lineCov">         10 :     | ((third &lt;&lt; 8)   &amp; 0xFF00)</span>
-<span class="lineNum">      97 </span><span class="lineCov">         10 :     |  (fourth        &amp; 0xFF);</span>
-<span class="lineNum">      98 </span>            : 
-<span class="lineNum">      99 </span><span class="lineCov">         10 :   return ip_integer;</span>
-<span class="lineNum">     100 </span>            : }
+<span class="lineNum">      47 </span><span class="lineCov">         14 :   free(cidr);</span>
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span><span class="lineCov">         14 :   return ((lower &lt;= ip) &amp;&amp; (ip &lt;= upper));</span>
+<a name="50"><span class="lineNum">      50 </span>            : }</a>
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span><span class="lineCov">         20 : int _string_to_cidr(CIDR *cidr, char *block)</span>
+<span class="lineNum">      53 </span>            : {
+<span class="lineNum">      54 </span><span class="lineCov">         20 :   char dup[strlen(block) + 1];</span>
+<span class="lineNum">      55 </span>            :   char *value;
+<span class="lineNum">      56 </span><span class="lineCov">         20 :   memcpy(dup, block, strlen(block) + 1);</span>
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span><span class="lineCov">         20 :   cidr-&gt;address_string = NULL;</span>
+<span class="lineNum">      59 </span><span class="lineCov">         20 :   value = strtok(dup,&quot;/&quot;);</span>
+<span class="lineNum">      60 </span><span class="lineCov">         20 :   if (value != NULL) {</span>
+<span class="lineNum">      61 </span><span class="lineCov">         20 :     cidr-&gt;address_string = value;</span>
+<span class="lineNum">      62 </span><span class="lineCov">         20 :     if (strlen(cidr-&gt;address_string) &lt; 7 || strlen(cidr-&gt;address_string) &gt; 16) {</span>
+<span class="lineNum">      63 </span>            :       return BAD_CIDR_BLOCK;
+<span class="lineNum">      64 </span>            :     }
+<span class="lineNum">      65 </span>            :   }
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span><span class="lineCov">         18 :   value = strtok(NULL,&quot;/&quot;);</span>
+<span class="lineNum">      68 </span><span class="lineCov">         18 :   if (value == NULL) {</span>
+<span class="lineNum">      69 </span>            :     return BAD_CIDR_BLOCK;
+<span class="lineNum">      70 </span>            :   } else {
+<span class="lineNum">      71 </span><span class="lineCov">         17 :     cidr-&gt;mask = strtol(value, 0, 10);</span>
+<span class="lineNum">      72 </span><span class="lineCov">         17 :     if (cidr-&gt;mask &lt; 0 || cidr-&gt;mask &gt; 32) {</span>
+<span class="lineNum">      73 </span>            :       return BAD_CIDR_BLOCK;
+<span class="lineNum">      74 </span>            :     }
+<span class="lineNum">      75 </span>            :   }
+<span class="lineNum">      76 </span>            : 
+<span class="lineNum">      77 </span><span class="lineCov">         16 :   if (cidr-&gt;address_string == NULL) {</span>
+<span class="lineNum">      78 </span>            :     return BAD_ADDRESS;
+<span class="lineNum">      79 </span>            :   } else {
+<span class="lineNum">      80 </span><span class="lineCov">         16 :     cidr-&gt;address = _string_to_integer(cidr-&gt;address_string);</span>
+<span class="lineNum">      81 </span><span class="lineCov">         16 :     if (cidr-&gt;address == BAD_ADDRESS) {</span>
+<span class="lineNum">      82 </span>            :       return BAD_ADDRESS;
+<span class="lineNum">      83 </span>            :     }
+<span class="lineNum">      84 </span>            :   }
+<span class="lineNum">      85 </span>            : 
+<span class="lineNum">      86 </span><span class="lineCov">         16 :   return LIBREPSHEET_OK;</span>
+<a name="87"><span class="lineNum">      87 </span>            : }</a>
+<span class="lineNum">      88 </span>            : 
+<span class="lineNum">      89 </span><span class="lineCov">         32 : int _string_to_integer(const char *address)</span>
+<span class="lineNum">      90 </span>            : {
+<span class="lineNum">      91 </span><span class="lineCov">         32 :   char dup[strlen(address) + 1];</span>
+<span class="lineNum">      92 </span>            :   char *value;
+<span class="lineNum">      93 </span><span class="lineCov">         32 :   memcpy(dup, address, strlen(address) + 1);</span>
+<span class="lineNum">      94 </span>            : 
+<span class="lineNum">      95 </span>            :   int first, second, third, fourth;
+<span class="lineNum">      96 </span>            : 
+<span class="lineNum">      97 </span><span class="lineCov">         32 :   value = strtok(dup, &quot;.&quot;);</span>
+<span class="lineNum">      98 </span><span class="lineCov">         32 :   if (value != NULL) {</span>
+<span class="lineNum">      99 </span><span class="lineCov">         32 :     first = strtol(value, 0, 10);</span>
+<span class="lineNum">     100 </span>            :   } else {
+<span class="lineNum">     101 </span>            :     return BAD_ADDRESS;
+<span class="lineNum">     102 </span>            :   }
+<span class="lineNum">     103 </span>            : 
+<span class="lineNum">     104 </span><span class="lineCov">         32 :   value = strtok(NULL, &quot;.&quot;);</span>
+<span class="lineNum">     105 </span><span class="lineCov">         32 :   if (value != NULL) {</span>
+<span class="lineNum">     106 </span><span class="lineCov">         32 :     second = strtol(value, 0, 10);</span>
+<span class="lineNum">     107 </span>            :   } else {
+<span class="lineNum">     108 </span>            :     return BAD_ADDRESS;
+<span class="lineNum">     109 </span>            :   }
+<span class="lineNum">     110 </span>            : 
+<span class="lineNum">     111 </span><span class="lineCov">         32 :   value = strtok(NULL, &quot;.&quot;);</span>
+<span class="lineNum">     112 </span><span class="lineCov">         32 :   if (value != NULL) {</span>
+<span class="lineNum">     113 </span><span class="lineCov">         32 :     third = strtol(value, 0, 10);</span>
+<span class="lineNum">     114 </span>            :   } else {
+<span class="lineNum">     115 </span>            :     return BAD_ADDRESS;
+<span class="lineNum">     116 </span>            :   }
+<span class="lineNum">     117 </span>            : 
+<span class="lineNum">     118 </span><span class="lineCov">         32 :   value = strtok(NULL, &quot;.&quot;);</span>
+<span class="lineNum">     119 </span><span class="lineCov">         32 :   if (value != NULL) {</span>
+<span class="lineNum">     120 </span><span class="lineCov">         32 :     fourth = strtol(value, 0, 10);</span>
+<span class="lineNum">     121 </span>            :   } else {
+<span class="lineNum">     122 </span>            :     return BAD_ADDRESS;
+<span class="lineNum">     123 </span>            :   }
+<span class="lineNum">     124 </span>            : 
+<span class="lineNum">     125 </span>            :   int i;
+<span class="lineNum">     126 </span><span class="lineCov">         32 :   int octets[] = {first, second, third, fourth};</span>
+<span class="lineNum">     127 </span>            : 
+<span class="lineNum">     128 </span><span class="lineCov">        158 :   for (i = 0; i &lt; 4; i++) {</span>
+<span class="lineNum">     129 </span><span class="lineCov">        128 :     if (octets[i] &lt; 0 || octets[i] &gt; 256) {</span>
+<span class="lineNum">     130 </span>            :       return BAD_ADDRESS;
+<span class="lineNum">     131 </span>            :     }
+<span class="lineNum">     132 </span>            :   }
+<span class="lineNum">     133 </span>            : 
+<span class="lineNum">     134 </span><span class="lineCov">         60 :   int ip_integer = ((first &lt;&lt; 24) &amp; 0xFF000000)</span>
+<span class="lineNum">     135 </span><span class="lineCov">         30 :     | ((second &lt;&lt; 16) &amp; 0xFF0000)</span>
+<span class="lineNum">     136 </span><span class="lineCov">         30 :     | ((third &lt;&lt; 8)   &amp; 0xFF00)</span>
+<span class="lineNum">     137 </span><span class="lineCov">         30 :     |  (fourth        &amp; 0xFF);</span>
+<span class="lineNum">     138 </span>            : 
+<span class="lineNum">     139 </span><span class="lineCov">         30 :   return ip_integer;</span>
+<span class="lineNum">     140 </span>            : }
 </pre>
       </td>
     </tr>
