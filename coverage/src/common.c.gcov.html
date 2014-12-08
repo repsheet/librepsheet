@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - librepsheet test coverage - src/common.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">src</a> - common.c<span style="font-size: 80%;"> (source / <a href="common.c.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">librepsheet test coverage</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">38</td>
+            <td class="headerCovTableEntry">38</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2014-12-08</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &lt;string.h&gt;</a>
+<span class="lineNum">       2 </span>            : 
+<span class="lineNum">       3 </span>            : #include &quot;repsheet.h&quot;
+<a name="4"><span class="lineNum">       4 </span>            : #include &quot;common.h&quot;</a>
+<span class="lineNum">       5 </span>            : 
+<span class="lineNum">       6 </span><span class="lineCov">         17 : void populate_reason(redisReply *reply, char *reason)</span>
+<span class="lineNum">       7 </span>            : {
+<span class="lineNum">       8 </span><span class="lineCov">         17 :   size_t s = reply-&gt;len &gt; MAX_REASON_LENGTH ? MAX_REASON_LENGTH : reply-&gt;len;</span>
+<span class="lineNum">       9 </span><span class="lineCov">         17 :   strncpy(reason, reply-&gt;str, s);</span>
+<span class="lineNum">      10 </span><span class="lineCov">         17 :   reason[s] = '\0';</span>
+<a name="11"><span class="lineNum">      11 </span><span class="lineCov">         17 : }</span></a>
+<span class="lineNum">      12 </span>            : 
+<span class="lineNum">      13 </span><span class="lineCov">          7 : int set(redisContext *context, const char *prefix, char *keyspace, const char *value)</span>
+<span class="lineNum">      14 </span>            : {
+<span class="lineNum">      15 </span>            :   redisReply *reply;
+<span class="lineNum">      16 </span><span class="lineCov">          7 :   reply = redisCommand(context, &quot;SET %s:repsheet:%s %s&quot;, prefix, keyspace, value);</span>
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span><span class="lineCov">          7 :   if (reply) {</span>
+<span class="lineNum">      19 </span><span class="lineCov">          7 :     freeReplyObject(reply);</span>
+<span class="lineNum">      20 </span><span class="lineCov">          7 :     return LIBREPSHEET_OK;</span>
+<span class="lineNum">      21 </span>            :   } else {
+<span class="lineNum">      22 </span>            :     return DISCONNECTED;
+<span class="lineNum">      23 </span>            :   }
+<a name="24"><span class="lineNum">      24 </span>            : }</a>
+<span class="lineNum">      25 </span>            : 
+<span class="lineNum">      26 </span><span class="lineCov">         14 : int set_list(redisContext *context, const char *prefix, char *keyspace, char *list, const char *value)</span>
+<span class="lineNum">      27 </span>            : {
+<span class="lineNum">      28 </span>            :   redisReply *reply;
+<span class="lineNum">      29 </span><span class="lineCov">         14 :   reply = redisCommand(context, &quot;SET %s:repsheet:%s:%s %s&quot;, prefix, keyspace, list, value);</span>
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span><span class="lineCov">         14 :   if (reply) {</span>
+<span class="lineNum">      32 </span><span class="lineCov">         14 :     freeReplyObject(reply);</span>
+<span class="lineNum">      33 </span><span class="lineCov">         14 :     return LIBREPSHEET_OK;</span>
+<span class="lineNum">      34 </span>            :   } else {
+<span class="lineNum">      35 </span>            :     return DISCONNECTED;
+<span class="lineNum">      36 </span>            :   }
+<span class="lineNum">      37 </span>            : }
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span>            : /**
+<span class="lineNum">      40 </span>            :  * Sets the expiry for a record
+<span class="lineNum">      41 </span>            :  *
+<span class="lineNum">      42 </span>            :  * @param context the Redis connection
+<span class="lineNum">      43 </span>            :  * @param actor the IP address of the actor
+<span class="lineNum">      44 </span>            :  * @param label the label associated with the actor
+<span class="lineNum">      45 </span>            :  * @param expiry the length until the record expires
+<span class="lineNum">      46 </span>            :  *
+<a name="47"><span class="lineNum">      47 </span>            :  * @returns an integer response</a>
+<span class="lineNum">      48 </span>            :  */
+<span class="lineNum">      49 </span><span class="lineCov">          1 : int expire(redisContext *context, const char *actor, char *label, int expiry)</span>
+<span class="lineNum">      50 </span>            : {
+<span class="lineNum">      51 </span>            :   redisReply *reply;
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span><span class="lineCov">          1 :   reply = redisCommand(context, &quot;EXPIRE %s:%s %d&quot;, actor, label, expiry);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :   if (reply) {</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :     freeReplyObject(reply);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :     return LIBREPSHEET_OK;</span>
+<span class="lineNum">      57 </span>            :   } else {
+<span class="lineNum">      58 </span>            :     return DISCONNECTED;
+<span class="lineNum">      59 </span>            :   }
+<span class="lineNum">      60 </span>            : }
+<span class="lineNum">      61 </span>            : 
+<span class="lineNum">      62 </span>            : /**
+<span class="lineNum">      63 </span>            :  * Blacklists and sets the expiry for a record. Adds the actor to the
+<span class="lineNum">      64 </span>            :  * blacklist history and sets the reason code.
+<span class="lineNum">      65 </span>            :  *
+<span class="lineNum">      66 </span>            :  * @param context the Redis connection
+<span class="lineNum">      67 </span>            :  * @param type IP or USER
+<span class="lineNum">      68 </span>            :  * @param actor the IP address of the actor
+<span class="lineNum">      69 </span>            :  * @param expiry the length until the record expires
+<span class="lineNum">      70 </span>            :  * @param reason the reason for blacklisting the actor
+<span class="lineNum">      71 </span>            :  *
+<a name="72"><span class="lineNum">      72 </span>            :  * @returns an integer response</a>
+<span class="lineNum">      73 </span>            :  */
+<span class="lineNum">      74 </span><span class="lineCov">          4 : int blacklist_and_expire(redisContext *context, int type, const char *actor, int expiry, char *reason)</span>
+<span class="lineNum">      75 </span>            : {
+<span class="lineNum">      76 </span>            :   redisReply *reply;
+<span class="lineNum">      77 </span>            : 
+<span class="lineNum">      78 </span><span class="lineCov">          4 :   redisCommand(context, &quot;MULTI&quot;);</span>
+<span class="lineNum">      79 </span><span class="lineCov">          4 :   switch(type) {</span>
+<span class="lineNum">      80 </span>            :   case IP:
+<span class="lineNum">      81 </span><span class="lineCov">          3 :     redisCommand(context, &quot;SETEX %s:repsheet:ip:blacklist %d %s&quot;, actor, expiry, reason);</span>
+<span class="lineNum">      82 </span><span class="lineCov">          3 :     redisCommand(context, &quot;SADD repsheet:ip:blacklist:history %s&quot;, actor);</span>
+<span class="lineNum">      83 </span><span class="lineCov">          3 :     break;</span>
+<span class="lineNum">      84 </span>            :   case USER:
+<span class="lineNum">      85 </span><span class="lineCov">          1 :     redisCommand(context, &quot;SETEX %s:repsheet:users:blacklist %d %s&quot;, actor, expiry, reason);</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :     redisCommand(context, &quot;SADD repsheet:users:blacklist:history %s&quot;, actor);</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 :     break;</span>
+<span class="lineNum">      88 </span>            :   }
+<span class="lineNum">      89 </span><span class="lineCov">          4 :   reply = redisCommand(context, &quot;EXEC&quot;);</span>
+<span class="lineNum">      90 </span>            : 
+<span class="lineNum">      91 </span><span class="lineCov">          4 :   if (reply) {</span>
+<span class="lineNum">      92 </span><span class="lineCov">          4 :     freeReplyObject(reply);</span>
+<span class="lineNum">      93 </span><span class="lineCov">          4 :     return LIBREPSHEET_OK;</span>
+<span class="lineNum">      94 </span>            :   } else {
+<span class="lineNum">      95 </span>            :     return DISCONNECTED;
+<span class="lineNum">      96 </span>            :   }
+<span class="lineNum">      97 </span>            : }
+<span class="lineNum">      98 </span>            : 
+<span class="lineNum">      99 </span>            : /**
+<span class="lineNum">     100 </span>            :  * Increments the number of times a rule has been triggered for an actor
+<span class="lineNum">     101 </span>            :  *
+<span class="lineNum">     102 </span>            :  * @param context the Redis connection
+<span class="lineNum">     103 </span>            :  * @param actor the IP address of the actor
+<span class="lineNum">     104 </span>            :  * @param rule the ModSecurity rule number
+<span class="lineNum">     105 </span>            :  *
+<a name="106"><span class="lineNum">     106 </span>            :  * @returns an integer response</a>
+<span class="lineNum">     107 </span>            :  */
+<span class="lineNum">     108 </span><span class="lineCov">          1 : int increment_rule_count(redisContext *context, const char *actor, char *rule)</span>
+<span class="lineNum">     109 </span>            : {
+<span class="lineNum">     110 </span>            :   redisReply *reply;
+<span class="lineNum">     111 </span>            : 
+<span class="lineNum">     112 </span><span class="lineCov">          1 :   reply = redisCommand(context, &quot;ZINCRBY %s:detected 1 %s&quot;, actor, rule);</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :   if (reply) {</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :     freeReplyObject(reply);</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :     return LIBREPSHEET_OK;</span>
+<span class="lineNum">     116 </span>            :   } else {
+<span class="lineNum">     117 </span>            :     return DISCONNECTED;
+<span class="lineNum">     118 </span>            :   }
+<span class="lineNum">     119 </span>            : }
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
