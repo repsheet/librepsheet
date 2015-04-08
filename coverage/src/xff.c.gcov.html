@@ -31,13 +31,13 @@
             <td class="headerValue">librepsheet test coverage</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">9</td>
-            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntry">17</td>
+            <td class="headerCovTableEntry">17</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2015-04-07</td>
+            <td class="headerValue">2015-04-08</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -60,53 +60,68 @@
       <td>
 <pre class="sourceHeading">          Line data    Source code</pre>
 <pre class="source">
-<a name="1"><span class="lineNum">       1 </span>            : #include &lt;pcre.h&gt;</a>
+<a name="1"><span class="lineNum">       1 </span>            : #include &lt;stdlib.h&gt;</a>
 <span class="lineNum">       2 </span>            : #include &lt;string.h&gt;
-<span class="lineNum">       3 </span>            : 
-<span class="lineNum">       4 </span>            : #include &quot;xff.h&quot;
-<span class="lineNum">       5 </span>            : 
-<span class="lineNum">       6 </span>            : /**
-<span class="lineNum">       7 </span>            :  * @file xff.c
-<span class="lineNum">       8 </span>            :  * @author Aaron Bedra
-<span class="lineNum">       9 </span>            :  * @date 12/09/2014
-<span class="lineNum">      10 </span>            :  */
-<span class="lineNum">      11 </span>            : 
-<span class="lineNum">      12 </span>            : /**
-<span class="lineNum">      13 </span>            :  * Determines the IP address of the actor. If X-Forwarded-For has
-<span class="lineNum">      14 </span>            :  * information, the function takes the first address in the string. If
-<span class="lineNum">      15 </span>            :  * no XFF information is provided the function returns the
-<span class="lineNum">      16 </span>            :  * connected_address.
-<span class="lineNum">      17 </span>            :  *
-<span class="lineNum">      18 </span>            :  * @param connected_address The IP of the connection to the server
-<a name="19"><span class="lineNum">      19 </span>            :  * @param xff_header The contents of the X-Forwarded-For header</a>
-<span class="lineNum">      20 </span>            :  */
-<span class="lineNum">      21 </span><span class="lineCov">          6 : const char *remote_address(char *connected_address, const char *xff_header)</span>
-<span class="lineNum">      22 </span>            : {
-<span class="lineNum">      23 </span><span class="lineCov">          6 :   if (xff_header == NULL) {</span>
-<span class="lineNum">      24 </span>            :     return connected_address;
-<span class="lineNum">      25 </span>            :   }
-<span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span>            :   int error_offset, subvector[30];
-<span class="lineNum">      28 </span>            :   const char *error, *address;
+<span class="lineNum">       3 </span>            : #include &lt;arpa/inet.h&gt;
+<span class="lineNum">       4 </span>            : 
+<span class="lineNum">       5 </span>            : #include &quot;repsheet.h&quot;
+<span class="lineNum">       6 </span>            : #include &quot;xff.h&quot;
+<span class="lineNum">       7 </span>            : 
+<span class="lineNum">       8 </span>            : /**
+<span class="lineNum">       9 </span>            :  * @file xff.c
+<span class="lineNum">      10 </span>            :  * @author Aaron Bedra
+<span class="lineNum">      11 </span>            :  * @date 12/09/2014
+<span class="lineNum">      12 </span>            :  */
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : /**
+<span class="lineNum">      15 </span>            :  * Determines the IP address of the actor. If X-Forwarded-For has
+<span class="lineNum">      16 </span>            :  * information, the function takes the first address in the string. If
+<span class="lineNum">      17 </span>            :  * no XFF information is provided the function returns the
+<span class="lineNum">      18 </span>            :  * connected_address.
+<span class="lineNum">      19 </span>            :  *
+<span class="lineNum">      20 </span>            :  * @param connected_address The IP of the connection to the server
+<span class="lineNum">      21 </span>            :  * @param xff_header The contents of the X-Forwarded-For header
+<a name="22"><span class="lineNum">      22 </span>            :  * @param address The string to store the resulting address</a>
+<span class="lineNum">      23 </span>            :  */
+<span class="lineNum">      24 </span><span class="lineCov">          6 : int remote_address(char *connected_address, char *xff_header, char *address)</span>
+<span class="lineNum">      25 </span>            : {
+<span class="lineNum">      26 </span><span class="lineCov">          6 :   if ((connected_address == NULL &amp;&amp; xff_header == NULL) || address == NULL) {</span>
+<span class="lineNum">      27 </span>            :     return NIL;
+<span class="lineNum">      28 </span>            :   }
 <span class="lineNum">      29 </span>            : 
-<span class="lineNum">      30 </span>            :   pcre *re_compiled;
-<span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span><span class="lineCov">          4 :   char *regex = &quot;\\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\b&quot;;</span>
-<span class="lineNum">      33 </span>            : 
-<span class="lineNum">      34 </span><span class="lineCov">          4 :   re_compiled = pcre_compile(regex, 0, &amp;error, &amp;error_offset, NULL);</span>
+<span class="lineNum">      30 </span>            :   int length;
+<span class="lineNum">      31 </span>            :   memset(address, '\0', INET6_ADDRSTRLEN);
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span><span class="lineCov">          5 :   if (xff_header != NULL) {</span>
+<span class="lineNum">      34 </span>            :     char *p;
 <span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span><span class="lineCov">          4 :   int matches = pcre_exec(re_compiled, 0, xff_header, strlen(xff_header), 0, 0, subvector, 30);</span>
-<span class="lineNum">      37 </span>            : 
-<span class="lineNum">      38 </span><span class="lineCov">          4 :   if(matches &lt; 0) {</span>
-<span class="lineNum">      39 </span>            :     return NULL;
-<span class="lineNum">      40 </span>            :   } else {
-<span class="lineNum">      41 </span><span class="lineCov">          4 :     pcre_get_substring(xff_header, subvector, matches, 0, &amp;(address));</span>
-<span class="lineNum">      42 </span>            :   }
-<span class="lineNum">      43 </span>            : 
-<span class="lineNum">      44 </span><span class="lineCov">          4 :   pcre_free(re_compiled);</span>
-<span class="lineNum">      45 </span>            : 
-<span class="lineNum">      46 </span><span class="lineCov">          4 :   return address;</span>
-<span class="lineNum">      47 </span>            : }
+<span class="lineNum">      36 </span><span class="lineCov">         32 :     for (p = xff_header; p &lt; (xff_header + strlen(xff_header)); p++) {</span>
+<span class="lineNum">      37 </span><span class="lineCov">         36 :       if (*p == ' ' || *p == ',') {</span>
+<span class="lineNum">      38 </span>            :         break;
+<span class="lineNum">      39 </span>            :       }
+<span class="lineNum">      40 </span>            :     }
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span><span class="lineCov">          4 :     length = p - xff_header;</span>
+<span class="lineNum">      43 </span><span class="lineCov">          4 :     char *test_address = malloc(length + 1);</span>
+<span class="lineNum">      44 </span><span class="lineCov">          4 :     memcpy(test_address, xff_header, length);</span>
+<span class="lineNum">      45 </span><span class="lineCov">          4 :     test_address[length] = '\0';</span>
+<span class="lineNum">      46 </span>            : 
+<span class="lineNum">      47 </span>            :     unsigned char buf[sizeof(struct in_addr)];
+<span class="lineNum">      48 </span>            :     unsigned char buf6[sizeof(struct in6_addr)];
+<span class="lineNum">      49 </span>            : 
+<span class="lineNum">      50 </span><span class="lineCov">          4 :     if (inet_pton(AF_INET, (const char *)test_address, buf) == 1 || inet_pton(AF_INET6, (const char *)test_address, buf6) == 1) {</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :       memcpy(address, test_address, length);</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :       free(test_address);</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :       return LIBREPSHEET_OK;</span>
+<span class="lineNum">      54 </span>            :     } else {
+<span class="lineNum">      55 </span><span class="lineCov">          3 :       free(test_address);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          3 :       return BLACKLISTED;</span>
+<span class="lineNum">      57 </span>            :     }
+<span class="lineNum">      58 </span>            :   } else {
+<span class="lineNum">      59 </span><span class="lineCov">          1 :     memcpy(address, connected_address, strlen(connected_address));</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :     return LIBREPSHEET_OK;</span>
+<span class="lineNum">      61 </span>            :   }
+<span class="lineNum">      62 </span>            : }
 </pre>
       </td>
     </tr>

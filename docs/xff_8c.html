@@ -23,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">librepsheet
-   &#160;<span id="projectnumber">4.0.0</span>
+   &#160;<span id="projectnumber">4.1.0</span>
    </div>
    <div id="projectbrief">TheRepsheetcorelogiclibrary</div>
   </td>
@@ -91,25 +91,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">xff.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;pcre.h&gt;</code><br/>
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br/>
 <code>#include &lt;string.h&gt;</code><br/>
+<code>#include &lt;arpa/inet.h&gt;</code><br/>
+<code>#include &quot;repsheet.h&quot;</code><br/>
 <code>#include &quot;xff.h&quot;</code><br/>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0a08e2c199becb1c8e7a6164ded91336"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xff_8c.html#a0a08e2c199becb1c8e7a6164ded91336">remote_address</a> (char *connected_address, const char *xff_header)</td></tr>
-<tr class="separator:a0a08e2c199becb1c8e7a6164ded91336"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36fb8fce13ed3a636375531f7728acec"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xff_8c.html#a36fb8fce13ed3a636375531f7728acec">remote_address</a> (char *connected_address, char *xff_header, char *address)</td></tr>
+<tr class="separator:a36fb8fce13ed3a636375531f7728acec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Aaron Bedra </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>12/09/2014 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a0a08e2c199becb1c8e7a6164ded91336"></a>
+<a class="anchor" id="a36fb8fce13ed3a636375531f7728acec"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const char* remote_address </td>
+          <td class="memname">int remote_address </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>connected_address</em>, </td>
@@ -117,8 +119,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>xff_header</em>&#160;</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>xff_header</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>address</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -132,6 +140,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">connected_address</td><td>The IP of the connection to the server </td></tr>
     <tr><td class="paramname">xff_header</td><td>The contents of the X-Forwarded-For header </td></tr>
+    <tr><td class="paramname">address</td><td>The string to store the resulting address </td></tr>
   </table>
   </dd>
 </dl>
@@ -141,7 +150,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 7 2015 20:34:44 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 8 2015 12:25:18 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
