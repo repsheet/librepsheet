@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-12-08</td>
+            <td class="headerValue">2015-04-07</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -120,14 +120,14 @@
 <span class="lineNum">      58 </span>            :  *
 <a name="59"><span class="lineNum">      59 </span>            :  * @returns a Redis connection</a>
 <span class="lineNum">      60 </span>            :  */
-<span class="lineNum">      61 </span><span class="lineCov">         48 : redisContext *get_redis_context(const char *host, int port, int timeout)</span>
+<span class="lineNum">      61 </span><span class="lineCov">         41 : redisContext *get_redis_context(const char *host, int port, int timeout)</span>
 <span class="lineNum">      62 </span>            : {
 <span class="lineNum">      63 </span>            :   redisContext *context;
 <span class="lineNum">      64 </span>            : 
-<span class="lineNum">      65 </span><span class="lineCov">         48 :   struct timeval time = {0, (timeout &gt; 0) ? timeout : 10000};</span>
+<span class="lineNum">      65 </span><span class="lineCov">         41 :   struct timeval time = {0, (timeout &gt; 0) ? timeout : 10000};</span>
 <span class="lineNum">      66 </span>            : 
-<span class="lineNum">      67 </span><span class="lineCov">         48 :   context = redisConnectWithTimeout(host, port, time);</span>
-<span class="lineNum">      68 </span><span class="lineCov">         48 :   if (context == NULL || context-&gt;err) {</span>
+<span class="lineNum">      67 </span><span class="lineCov">         41 :   context = redisConnectWithTimeout(host, port, time);</span>
+<span class="lineNum">      68 </span><span class="lineCov">         41 :   if (context == NULL || context-&gt;err) {</span>
 <span class="lineNum">      69 </span><span class="lineCov">          2 :     if (context) {</span>
 <span class="lineNum">      70 </span><span class="lineCov">          2 :       printf(&quot;Error: %s\n&quot;, context-&gt;errstr);</span>
 <span class="lineNum">      71 </span><span class="lineCov">          2 :       redisFree(context);</span>

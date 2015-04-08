@@ -7,10 +7,10 @@
 
 var indexSectionsWithContent =
 {
-  0: "acgl",
+  0: "abcegilmrwx",
   1: "c",
-  2: "cl",
-  3: "acg",
+  2: "bclmwx",
+  3: "abcegimrw",
   4: "l"
 };
 

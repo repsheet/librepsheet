@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cidr_2ec',['cidr.c',['../cidr_8c.html',1,'']]]
+  ['blacklist_2ec',['blacklist.c',['../blacklist_8c.html',1,'']]]
 ];

@@ -23,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">librepsheet
-   &#160;<span id="projectnumber">3.2.0</span>
+   &#160;<span id="projectnumber">4.0.0</span>
    </div>
    <div id="projectbrief">TheRepsheetcorelogiclibrary</div>
   </td>
@@ -92,16 +92,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __WHITELIST_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __WHITELIST_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keywordtype">int</span> whitelist_actor(redisContext *context, <span class="keyword">const</span> <span class="keywordtype">char</span> *actor, <span class="keywordtype">int</span> type, <span class="keyword">const</span> <span class="keywordtype">char</span> *reason);</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">int</span> is_ip_whitelisted(redisContext *context, <span class="keyword">const</span> <span class="keywordtype">char</span> *actor, <span class="keywordtype">char</span> *reason);</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">int</span> is_user_whitelisted(redisContext *context, <span class="keyword">const</span> <span class="keywordtype">char</span> *actor, <span class="keywordtype">char</span> *reason);</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">int</span> is_country_whitelisted(redisContext *context, <span class="keyword">const</span> <span class="keywordtype">char</span> *country_code);</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keywordtype">int</span> <a class="code" href="whitelist_8c.html#aaad15156ff2bfe99263aeaa5f8fdf414">whitelist_actor</a>(redisContext *context, <span class="keyword">const</span> <span class="keywordtype">char</span> *actor, <span class="keywordtype">int</span> type, <span class="keyword">const</span> <span class="keywordtype">char</span> *reason);</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">int</span> <a class="code" href="whitelist_8c.html#a546d4529aa0542f15a6485f4254cab6c">is_ip_whitelisted</a>(redisContext *context, <span class="keyword">const</span> <span class="keywordtype">char</span> *actor, <span class="keywordtype">char</span> *reason);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">int</span> <a class="code" href="whitelist_8c.html#acd7d0c4ae1f3751e0f9436fa3157ee23">is_user_whitelisted</a>(redisContext *context, <span class="keyword">const</span> <span class="keywordtype">char</span> *actor, <span class="keywordtype">char</span> *reason);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">int</span> <a class="code" href="whitelist_8c.html#af9bbdbe5463837eaa2817efb56ae96b6">is_country_whitelisted</a>(redisContext *context, <span class="keyword">const</span> <span class="keywordtype">char</span> *country_code);</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="whitelist_8c_html_acd7d0c4ae1f3751e0f9436fa3157ee23"><div class="ttname"><a href="whitelist_8c.html#acd7d0c4ae1f3751e0f9436fa3157ee23">is_user_whitelisted</a></div><div class="ttdeci">int is_user_whitelisted(redisContext *context, const char *actor, char *reason)</div><div class="ttdef"><b>Definition:</b> whitelist.c:105</div></div>
+<div class="ttc" id="whitelist_8c_html_af9bbdbe5463837eaa2817efb56ae96b6"><div class="ttname"><a href="whitelist_8c.html#af9bbdbe5463837eaa2817efb56ae96b6">is_country_whitelisted</a></div><div class="ttdeci">int is_country_whitelisted(redisContext *context, const char *country_code)</div><div class="ttdef"><b>Definition:</b> whitelist.c:132</div></div>
+<div class="ttc" id="whitelist_8c_html_a546d4529aa0542f15a6485f4254cab6c"><div class="ttname"><a href="whitelist_8c.html#a546d4529aa0542f15a6485f4254cab6c">is_ip_whitelisted</a></div><div class="ttdeci">int is_ip_whitelisted(redisContext *context, const char *actor, char *reason)</div><div class="ttdef"><b>Definition:</b> whitelist.c:53</div></div>
+<div class="ttc" id="whitelist_8c_html_aaad15156ff2bfe99263aeaa5f8fdf414"><div class="ttname"><a href="whitelist_8c.html#aaad15156ff2bfe99263aeaa5f8fdf414">whitelist_actor</a></div><div class="ttdeci">int whitelist_actor(redisContext *context, const char *actor, int type, const char *reason)</div><div class="ttdef"><b>Definition:</b> whitelist.c:24</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 8 2014 14:23:58 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Apr 7 2015 20:34:44 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

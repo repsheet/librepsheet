@@ -23,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">librepsheet
-   &#160;<span id="projectnumber">3.2.0</span>
+   &#160;<span id="projectnumber">4.0.0</span>
    </div>
    <div id="projectbrief">TheRepsheetcorelogiclibrary</div>
   </td>
@@ -94,19 +94,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keywordtype">void</span> populate_reason(redisReply *reply, <span class="keywordtype">char</span> *reason);</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">int</span> expire(redisContext *context, <span class="keyword">const</span> <span class="keywordtype">char</span> *actor, <span class="keywordtype">char</span> *label, <span class="keywordtype">int</span> expiry);</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">int</span> blacklist_and_expire(redisContext *context, <span class="keywordtype">int</span> type, <span class="keyword">const</span> <span class="keywordtype">char</span> *actor, <span class="keywordtype">int</span> expiry, <span class="keywordtype">char</span> *reason);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">int</span> <a class="code" href="common_8c.html#a857247d0756ac1de6b71494a164253d2">expire</a>(redisContext *context, <span class="keyword">const</span> <span class="keywordtype">char</span> *actor, <span class="keywordtype">char</span> *label, <span class="keywordtype">int</span> expiry);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">int</span> <a class="code" href="common_8c.html#ae442f01919c7bfb7c5a7fea6b6c02f69">blacklist_and_expire</a>(redisContext *context, <span class="keywordtype">int</span> type, <span class="keyword">const</span> <span class="keywordtype">char</span> *actor, <span class="keywordtype">int</span> expiry, <span class="keywordtype">char</span> *reason);</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">int</span> increment_rule_count(redisContext *context, <span class="keyword">const</span> <span class="keywordtype">char</span> *actor, <span class="keywordtype">char</span> *rule);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">int</span> <a class="code" href="common_8c.html#add5cc9253b42b76ce2bbbb58a5f3771d">increment_rule_count</a>(redisContext *context, <span class="keyword">const</span> <span class="keywordtype">char</span> *actor, <span class="keywordtype">char</span> *rule);</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">int</span> set(redisContext *context, <span class="keyword">const</span> <span class="keywordtype">char</span> *prefix, <span class="keywordtype">char</span> *keyspace, <span class="keyword">const</span> <span class="keywordtype">char</span> *value);</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">int</span> set_list(redisContext *context, <span class="keyword">const</span> <span class="keywordtype">char</span> *prefix, <span class="keywordtype">char</span> *keyspace, <span class="keywordtype">char</span> *list, <span class="keyword">const</span> <span class="keywordtype">char</span> *value);</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="common_8c_html_a857247d0756ac1de6b71494a164253d2"><div class="ttname"><a href="common_8c.html#a857247d0756ac1de6b71494a164253d2">expire</a></div><div class="ttdeci">int expire(redisContext *context, const char *actor, char *label, int expiry)</div><div class="ttdef"><b>Definition:</b> common.c:55</div></div>
+<div class="ttc" id="common_8c_html_add5cc9253b42b76ce2bbbb58a5f3771d"><div class="ttname"><a href="common_8c.html#add5cc9253b42b76ce2bbbb58a5f3771d">increment_rule_count</a></div><div class="ttdeci">int increment_rule_count(redisContext *context, const char *actor, char *rule)</div><div class="ttdef"><b>Definition:</b> common.c:114</div></div>
+<div class="ttc" id="common_8c_html_ae442f01919c7bfb7c5a7fea6b6c02f69"><div class="ttname"><a href="common_8c.html#ae442f01919c7bfb7c5a7fea6b6c02f69">blacklist_and_expire</a></div><div class="ttdeci">int blacklist_and_expire(redisContext *context, int type, const char *actor, int expiry, char *reason)</div><div class="ttdef"><b>Definition:</b> common.c:80</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 8 2014 14:23:58 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Apr 7 2015 20:34:44 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
