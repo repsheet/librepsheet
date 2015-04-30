@@ -23,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">librepsheet
-   &#160;<span id="projectnumber">4.1.0</span>
+   &#160;<span id="projectnumber">5.0.0</span>
    </div>
    <div id="projectbrief">TheRepsheetcorelogiclibrary</div>
   </td>
@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -99,16 +100,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a58d0c2f2fbcd6bd33057f3fa8ef7139d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blacklist_8c.html#a58d0c2f2fbcd6bd33057f3fa8ef7139d">blacklist_actor</a> (redisContext *context, const char *actor, int type, const char *reason)</td></tr>
+<tr class="memitem:a58d0c2f2fbcd6bd33057f3fa8ef7139d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blacklist_8c.html#a58d0c2f2fbcd6bd33057f3fa8ef7139d">blacklist_actor</a> (<a class="el" href="structredis_context.html">redisContext</a> *context, const char *actor, int type, const char *reason)</td></tr>
 <tr class="separator:a58d0c2f2fbcd6bd33057f3fa8ef7139d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71687e9bfc47eaf367e997b40769ffd4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blacklist_8c.html#a71687e9bfc47eaf367e997b40769ffd4">is_ip_blacklisted</a> (redisContext *context, const char *actor, char *reason)</td></tr>
+<tr class="memitem:a71687e9bfc47eaf367e997b40769ffd4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blacklist_8c.html#a71687e9bfc47eaf367e997b40769ffd4">is_ip_blacklisted</a> (<a class="el" href="structredis_context.html">redisContext</a> *context, const char *actor, char *reason)</td></tr>
 <tr class="separator:a71687e9bfc47eaf367e997b40769ffd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d5e51dfaf389015f197cb693de93be5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blacklist_8c.html#a4d5e51dfaf389015f197cb693de93be5">is_user_blacklisted</a> (redisContext *context, const char *actor, char *reason)</td></tr>
+<tr class="memitem:a4d5e51dfaf389015f197cb693de93be5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blacklist_8c.html#a4d5e51dfaf389015f197cb693de93be5">is_user_blacklisted</a> (<a class="el" href="structredis_context.html">redisContext</a> *context, const char *actor, char *reason)</td></tr>
 <tr class="separator:a4d5e51dfaf389015f197cb693de93be5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a268639f9409ca26e1650b4652f3de316"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blacklist_8c.html#a268639f9409ca26e1650b4652f3de316">is_country_blacklisted</a> (redisContext *context, const char *country_code)</td></tr>
-<tr class="separator:a268639f9409ca26e1650b4652f3de316"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafbfa22e1090da4e3ae0f948ce7cfc15"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blacklist_8c.html#aafbfa22e1090da4e3ae0f948ce7cfc15">is_historical_offender</a> (redisContext *context, int type, const char *actor)</td></tr>
-<tr class="separator:aafbfa22e1090da4e3ae0f948ce7cfc15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Aaron Bedra </dd></dl>
@@ -121,7 +118,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int blacklist_actor </td>
           <td>(</td>
-          <td class="paramtype">redisContext *&#160;</td>
+          <td class="paramtype"><a class="el" href="structredis_context.html">redisContext</a> *&#160;</td>
           <td class="paramname"><em>context</em>, </td>
         </tr>
         <tr>
@@ -162,83 +159,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a268639f9409ca26e1650b4652f3de316"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int is_country_blacklisted </td>
-          <td>(</td>
-          <td class="paramtype">redisContext *&#160;</td>
-          <td class="paramname"><em>context</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>country_code</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Looks up the country to see if it is blacklisted.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
-    <tr><td class="paramname">country_code</td><td>the 2 digit ISO country code</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>an integer response </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="aafbfa22e1090da4e3ae0f948ce7cfc15"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int is_historical_offender </td>
-          <td>(</td>
-          <td class="paramtype">redisContext *&#160;</td>
-          <td class="paramname"><em>context</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>type</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>actor</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Checks to see if an actor has been previously blacklisted</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
-    <tr><td class="paramname">type</td><td>IP or USER </td></tr>
-    <tr><td class="paramname">actor</td><td>the addres of the actor in question</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>an integer response </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="a71687e9bfc47eaf367e997b40769ffd4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -246,7 +166,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int is_ip_blacklisted </td>
           <td>(</td>
-          <td class="paramtype">redisContext *&#160;</td>
+          <td class="paramtype"><a class="el" href="structredis_context.html">redisContext</a> *&#160;</td>
           <td class="paramname"><em>context</em>, </td>
         </tr>
         <tr>
@@ -288,7 +208,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int is_user_blacklisted </td>
           <td>(</td>
-          <td class="paramtype">redisContext *&#160;</td>
+          <td class="paramtype"><a class="el" href="structredis_context.html">redisContext</a> *&#160;</td>
           <td class="paramname"><em>context</em>, </td>
         </tr>
         <tr>
@@ -326,7 +246,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 8 2015 12:25:18 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 29 2015 23:04:58 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

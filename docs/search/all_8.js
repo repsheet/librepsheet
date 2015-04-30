@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['remote_5faddress',['remote_address',['../xff_8c.html#a36fb8fce13ed3a636375531f7728acec',1,'xff.c']]]
+  ['mark_5factor',['mark_actor',['../marked_8c.html#a9d3da0fcd74476637e74a6c489dd5034',1,'marked.c']]],
+  ['marked_2ec',['marked.c',['../marked_8c.html',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['expire',['expire',['../common_8c.html#a857247d0756ac1de6b71494a164253d2',1,'common.c']]]
+  ['get_5fredis_5fcontext',['get_redis_context',['../librepsheet_8c.html#ab7f34882a252ff795e6b349dbd91f1fe',1,'librepsheet.c']]]
 ];

@@ -23,7 +23,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">librepsheet
-   &#160;<span id="projectnumber">4.1.0</span>
+   &#160;<span id="projectnumber">5.0.0</span>
    </div>
    <div id="projectbrief">TheRepsheetcorelogiclibrary</div>
   </td>
@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -98,176 +99,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a63e4d197b7e6b8e2b57af4f5f712a338"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63e4d197b7e6b8e2b57af4f5f712a338"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>populate_reason</b> (redisReply *reply, char *reason)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>populate_reason</b> (<a class="el" href="structredis_reply.html">redisReply</a> *reply, char *reason)</td></tr>
 <tr class="separator:a63e4d197b7e6b8e2b57af4f5f712a338"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b933542d58301936c000153392048d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7b933542d58301936c000153392048d6"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>set</b> (redisContext *context, const char *prefix, char *keyspace, const char *value)</td></tr>
-<tr class="separator:a7b933542d58301936c000153392048d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c3d4d686adaaedfb8e7d22a172877b9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c3d4d686adaaedfb8e7d22a172877b9"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>set_list</b> (redisContext *context, const char *prefix, char *keyspace, char *list, const char *value)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>set_list</b> (<a class="el" href="structredis_context.html">redisContext</a> *context, const char *prefix, char *keyspace, char *list, const char *value)</td></tr>
 <tr class="separator:a3c3d4d686adaaedfb8e7d22a172877b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a857247d0756ac1de6b71494a164253d2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common_8c.html#a857247d0756ac1de6b71494a164253d2">expire</a> (redisContext *context, const char *actor, char *label, int expiry)</td></tr>
-<tr class="separator:a857247d0756ac1de6b71494a164253d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae442f01919c7bfb7c5a7fea6b6c02f69"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common_8c.html#ae442f01919c7bfb7c5a7fea6b6c02f69">blacklist_and_expire</a> (redisContext *context, int type, const char *actor, int expiry, char *reason)</td></tr>
-<tr class="separator:ae442f01919c7bfb7c5a7fea6b6c02f69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add5cc9253b42b76ce2bbbb58a5f3771d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common_8c.html#add5cc9253b42b76ce2bbbb58a5f3771d">increment_rule_count</a> (redisContext *context, const char *actor, char *rule)</td></tr>
-<tr class="separator:add5cc9253b42b76ce2bbbb58a5f3771d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Aaron Bedra </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>12/09/2014 </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ae442f01919c7bfb7c5a7fea6b6c02f69"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int blacklist_and_expire </td>
-          <td>(</td>
-          <td class="paramtype">redisContext *&#160;</td>
-          <td class="paramname"><em>context</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>type</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>actor</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>expiry</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>reason</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Blacklists and sets the expiry for a record. Adds the actor to the blacklist history and sets the reason code.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
-    <tr><td class="paramname">type</td><td>IP or USER </td></tr>
-    <tr><td class="paramname">actor</td><td>the IP address of the actor </td></tr>
-    <tr><td class="paramname">expiry</td><td>the length until the record expires </td></tr>
-    <tr><td class="paramname">reason</td><td>the reason for blacklisting the actor</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>an integer response </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a857247d0756ac1de6b71494a164253d2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int expire </td>
-          <td>(</td>
-          <td class="paramtype">redisContext *&#160;</td>
-          <td class="paramname"><em>context</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>actor</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>label</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>expiry</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Sets the expiry for a record</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
-    <tr><td class="paramname">actor</td><td>the IP address of the actor </td></tr>
-    <tr><td class="paramname">label</td><td>the label associated with the actor </td></tr>
-    <tr><td class="paramname">expiry</td><td>the length until the record expires</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>an integer response </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="add5cc9253b42b76ce2bbbb58a5f3771d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int increment_rule_count </td>
-          <td>(</td>
-          <td class="paramtype">redisContext *&#160;</td>
-          <td class="paramname"><em>context</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>actor</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>rule</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Increments the number of times a rule has been triggered for an actor</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">context</td><td>the Redis connection </td></tr>
-    <tr><td class="paramname">actor</td><td>the IP address of the actor </td></tr>
-    <tr><td class="paramname">rule</td><td>the ModSecurity rule number</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>an integer response </dd></dl>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 8 2015 12:25:18 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 29 2015 23:04:58 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
