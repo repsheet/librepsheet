@@ -1,20 +1,4 @@
 var searchData=
 [
-  ['readme',['README',['../md_src_hiredis__r_e_a_d_m_e.html',1,'']]],
-  ['redisaeevents',['redisAeEvents',['../structredis_ae_events.html',1,'']]],
-  ['redisasynccontext',['redisAsyncContext',['../structredis_async_context.html',1,'']]],
-  ['rediscallback',['redisCallback',['../structredis_callback.html',1,'']]],
-  ['rediscallbacklist',['redisCallbackList',['../structredis_callback_list.html',1,'']]],
-  ['rediscontext',['redisContext',['../structredis_context.html',1,'']]],
-  ['redislibeventevents',['redisLibeventEvents',['../structredis_libevent_events.html',1,'']]],
-  ['redislibevevents',['redisLibevEvents',['../structredis_libev_events.html',1,'']]],
-  ['redislibuvevents',['redisLibuvEvents',['../structredis_libuv_events.html',1,'']]],
-  ['redisreader',['redisReader',['../structredis_reader.html',1,'']]],
-  ['redisreadtask',['redisReadTask',['../structredis_read_task.html',1,'']]],
-  ['redisreply',['redisReply',['../structredis_reply.html',1,'']]],
-  ['redisreplyobjectfunctions',['redisReplyObjectFunctions',['../structredis_reply_object_functions.html',1,'']]],
-  ['redissource',['RedisSource',['../struct_redis_source.html',1,'']]],
-  ['remote_5faddress',['remote_address',['../xff_8c.html#a36fb8fce13ed3a636375531f7728acec',1,'xff.c']]],
-  ['repsheet_5fconnect',['repsheet_connect',['../librepsheet_8c.html#ab8f2704972b7bcac3d19dc906b894649',1,'librepsheet.c']]],
-  ['repsheet_5freconnect',['repsheet_reconnect',['../librepsheet_8c.html#a74e781dd4d2630d0ab65248496ea83fe',1,'librepsheet.c']]]
+  ['xff_2ec',['xff.c',['../xff_8c.html',1,'']]]
 ];

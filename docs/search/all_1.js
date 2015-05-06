@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['actor_5fstatus',['actor_status',['../librepsheet_8c.html#aae284cfb64861f5921aae8f907c924bd',1,'librepsheet.c']]]
+  ['blacklist_2ec',['blacklist.c',['../blacklist_8c.html',1,'']]],
+  ['blacklist_5factor',['blacklist_actor',['../blacklist_8c.html#a58d0c2f2fbcd6bd33057f3fa8ef7139d',1,'blacklist.c']]]
 ];
