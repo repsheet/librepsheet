@@ -31,17 +31,17 @@
             <td class="headerValue">librepsheet test coverage</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">10</td>
-            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">17</td>
+            <td class="headerCovTableEntry">17</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2015-05-06</td>
+            <td class="headerValue">2015-06-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
@@ -78,18 +78,35 @@
 <span class="lineNum">      16 </span><span class="lineCov">         15 :   reason[s] = '\0';</span>
 <a name="17"><span class="lineNum">      17 </span><span class="lineCov">         15 : }</span></a>
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span><span class="lineCov">         15 : int set_list(redisContext *context, const char *prefix, char *keyspace, char *list, const char *value)</span>
+<span class="lineNum">      19 </span><span class="lineCov">         13 : int set_list(redisContext *context, const char *prefix, char *keyspace, char *list, const char *value)</span>
 <span class="lineNum">      20 </span>            : {
 <span class="lineNum">      21 </span>            :   redisReply *reply;
-<span class="lineNum">      22 </span><span class="lineCov">         15 :   reply = redisCommand(context, &quot;SET %s:repsheet:%s:%s %s&quot;, prefix, keyspace, list, value);</span>
+<span class="lineNum">      22 </span><span class="lineCov">         13 :   reply = redisCommand(context, &quot;SET %s:repsheet:%s:%s %s&quot;, prefix, keyspace, list, value);</span>
 <span class="lineNum">      23 </span>            : 
-<span class="lineNum">      24 </span><span class="lineCov">         15 :   if (reply) {</span>
-<span class="lineNum">      25 </span><span class="lineCov">         14 :     freeReplyObject(reply);</span>
-<span class="lineNum">      26 </span><span class="lineCov">         14 :     return LIBREPSHEET_OK;</span>
+<span class="lineNum">      24 </span><span class="lineCov">         13 :   if (reply) {</span>
+<span class="lineNum">      25 </span><span class="lineCov">         12 :     freeReplyObject(reply);</span>
+<span class="lineNum">      26 </span><span class="lineCov">         12 :     return LIBREPSHEET_OK;</span>
 <span class="lineNum">      27 </span>            :   } else {
 <span class="lineNum">      28 </span>            :     return DISCONNECTED;
 <span class="lineNum">      29 </span>            :   }
-<span class="lineNum">      30 </span>            : }
+<a name="30"><span class="lineNum">      30 </span>            : }</a>
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span><span class="lineCov">          2 : int set_block(redisContext *context, const char *prefix, char *list, const char *value)</span>
+<span class="lineNum">      33 </span>            : {
+<span class="lineNum">      34 </span>            :   redisReply *reply;
+<span class="lineNum">      35 </span><span class="lineCov">          2 :   reply = redisCommand(context, &quot;SET %s:repsheet:cidr:%s %s&quot;, prefix, list, value);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          2 :   if (reply &amp;&amp; reply-&gt;type != REDIS_REPLY_NIL) {</span>
+<span class="lineNum">      37 </span><span class="lineCov">          2 :     reply = redisCommand(context, &quot;SADD repsheet:cidr:%s %s&quot;, list, prefix);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          2 :     if (reply &amp;&amp; reply-&gt;type != REDIS_REPLY_NIL) {</span>
+<span class="lineNum">      39 </span><span class="lineCov">          2 :       freeReplyObject(reply);</span>
+<span class="lineNum">      40 </span><span class="lineCov">          2 :       return LIBREPSHEET_OK;</span>
+<span class="lineNum">      41 </span>            :     } else {
+<span class="lineNum">      42 </span>            :       return DISCONNECTED;
+<span class="lineNum">      43 </span>            :     }
+<span class="lineNum">      44 </span>            :   } else {
+<span class="lineNum">      45 </span>            :     return DISCONNECTED;
+<span class="lineNum">      46 </span>            :   }
+<span class="lineNum">      47 </span>            : }
 </pre>
       </td>
     </tr>

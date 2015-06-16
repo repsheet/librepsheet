@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2015-05-06</td>
+            <td class="headerValue">2015-06-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -83,7 +83,7 @@
 <span class="lineNum">      21 </span>            :  *
 <a name="22"><span class="lineNum">      22 </span>            :  * @returns an integer result</a>
 <span class="lineNum">      23 </span>            :  */
-<span class="lineNum">      24 </span><span class="lineCov">          5 : int whitelist_actor(redisContext *context, const char *actor, int type, const char *reason)</span>
+<span class="lineNum">      24 </span><span class="lineCov">          5 : int whitelist(redisContext *context, const char *actor, int type, const char *reason)</span>
 <span class="lineNum">      25 </span>            : {
 <span class="lineNum">      26 </span>            :   redisReply *reply;
 <span class="lineNum">      27 </span>            : 
@@ -95,7 +95,7 @@
 <span class="lineNum">      33 </span><span class="lineCov">          2 :     return set_list(context, actor, &quot;user&quot;, &quot;whitelisted&quot;, reason);</span>
 <span class="lineNum">      34 </span>            :     break;
 <span class="lineNum">      35 </span>            :   case BLOCK:
-<span class="lineNum">      36 </span><span class="lineCov">          1 :     return set_list(context, actor, &quot;cidr&quot;, &quot;whitelisted&quot;, reason);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :     return set_block(context, actor, &quot;whitelisted&quot;, reason);</span>
 <span class="lineNum">      37 </span>            :     break;
 <span class="lineNum">      38 </span>            :   default:
 <span class="lineNum">      39 </span>            :     return UNSUPPORTED;
@@ -127,7 +127,7 @@
 <span class="lineNum">      65 </span>            :     return DISCONNECTED;
 <span class="lineNum">      66 </span>            :   }
 <span class="lineNum">      67 </span>            : 
-<span class="lineNum">      68 </span><span class="lineCov">          6 :   redisReply *whitelisted = redisCommand(context, &quot;KEYS *:repsheet:cidr:whitelisted&quot;);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          6 :   redisReply *whitelisted = redisCommand(context, &quot;SMEMBERS repsheet:cidr:whitelisted&quot;);</span>
 <span class="lineNum">      69 </span><span class="lineCov">          6 :   if (whitelisted) {</span>
 <span class="lineNum">      70 </span><span class="lineCov">          6 :     if (whitelisted-&gt;type == REDIS_REPLY_ARRAY) {</span>
 <span class="lineNum">      71 </span>            :       int i;
