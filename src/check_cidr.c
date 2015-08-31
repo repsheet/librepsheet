@@ -25,7 +25,7 @@ int check_and_update_cache(redisContext *context, const char *actor, char *reaso
           range range;
           int rc = block_to_range(block, &range);
           if (rc >= 0) {   
-            strncpy(range.block, block, MAX_BLOCK_SIZE);
+            strlcpy(range.block, block, MAX_BLOCK_SIZE);
             push_item(ev, &range);
           }
         }
