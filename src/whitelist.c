@@ -12,6 +12,13 @@
  * @date 12/09/2014
  */
 
+static int initial_whitelist_size = 10000;
+
+void set_initial_whitelist_size(int size)
+{
+  initial_whitelist_size = size;
+}
+
 /**
  * Adds the actor to the Repsheet whitelist
  *
@@ -71,7 +78,7 @@ int is_ip_whitelisted(redisContext *context, const char *actor, char *reason)
   }
 
   if (cidr_cache == NULL) {
-    cidr_cache = create_expanding_vector(10000);
+    cidr_cache = create_expanding_vector(initial_whitelist_size);
   }
   return checkCIDR(context, actor, reason, "whitelisted", cidr_cache, &cache_update_time);
 }
