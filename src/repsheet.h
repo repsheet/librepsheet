@@ -33,5 +33,6 @@ int remote_address(char *connected_address, char *xff_header, char *address);
 int blacklist(redisContext *context, const char *actor, int type, const char *reason);
 int whitelist(redisContext *context, const char *actor, int type, const char *reason);
 int mark(redisContext *context, const char *actor, int type, const char *reason);
-
+void set_initial_whitelist_size(int size);
+void set_initial_blacklist_size(int size);
 #endif

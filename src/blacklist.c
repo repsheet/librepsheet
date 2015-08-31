@@ -12,6 +12,13 @@
  * @date 12/09/2014
  */
 
+static int initial_blacklist_size = 1000;
+
+void set_initial_blacklist_size(int size)
+{
+  initial_blacklist_size = size;
+}
+
 /**
  * Adds the actor to the Repsheet blacklist
  *
@@ -72,7 +79,7 @@ int is_ip_blacklisted(redisContext *context, const char *actor, char *reason)
   }
 
   if (cidr_cache == NULL) {
-    cidr_cache = create_expanding_vector(1000);
+    cidr_cache = create_expanding_vector(initial_blacklist_size);
   }
   return checkCIDR(context, actor, reason, "blacklisted", cidr_cache, &cache_update_time);
 }
