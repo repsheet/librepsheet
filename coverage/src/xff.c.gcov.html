@@ -31,13 +31,13 @@
             <td class="headerValue">librepsheet test coverage</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">18</td>
-            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntry">15</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2015-06-16</td>
+            <td class="headerValue">2015-09-09</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -102,7 +102,7 @@
 <span class="lineNum">      40 </span>            :     }
 <span class="lineNum">      41 </span>            : 
 <span class="lineNum">      42 </span><span class="lineCov">          4 :     length = p - xff_header;</span>
-<span class="lineNum">      43 </span><span class="lineCov">          4 :     char *test_address = malloc(length + 1);</span>
+<span class="lineNum">      43 </span><span class="lineCov">          4 :     char test_address[length + 1];</span>
 <span class="lineNum">      44 </span><span class="lineCov">          4 :     memcpy(test_address, xff_header, length);</span>
 <span class="lineNum">      45 </span><span class="lineCov">          4 :     test_address[length] = '\0';</span>
 <span class="lineNum">      46 </span>            : 
@@ -111,17 +111,15 @@
 <span class="lineNum">      49 </span>            : 
 <span class="lineNum">      50 </span><span class="lineCov">          4 :     if (inet_pton(AF_INET, (const char *)test_address, buf) == 1 || inet_pton(AF_INET6, (const char *)test_address, buf6) == 1) {</span>
 <span class="lineNum">      51 </span><span class="lineCov">          1 :       memcpy(address, test_address, length);</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 :       free(test_address);</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 :       return LIBREPSHEET_OK;</span>
-<span class="lineNum">      54 </span>            :     } else {
-<span class="lineNum">      55 </span><span class="lineCov">          3 :       free(test_address);</span>
-<span class="lineNum">      56 </span><span class="lineCov">          3 :       return BLACKLISTED;</span>
-<span class="lineNum">      57 </span>            :     }
-<span class="lineNum">      58 </span>            :   } else {
-<span class="lineNum">      59 </span><span class="lineCov">          1 :     memcpy(address, connected_address, strlen(connected_address));</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 :     return LIBREPSHEET_OK;</span>
-<span class="lineNum">      61 </span>            :   }
-<span class="lineNum">      62 </span>            : }
+<span class="lineNum">      52 </span><span class="lineCov">          1 :       return LIBREPSHEET_OK;</span>
+<span class="lineNum">      53 </span>            :     } else {
+<span class="lineNum">      54 </span>            :       return BLACKLISTED;
+<span class="lineNum">      55 </span>            :     }
+<span class="lineNum">      56 </span>            :   } else {
+<span class="lineNum">      57 </span><span class="lineCov">          1 :     memcpy(address, connected_address, strlen(connected_address));</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 :     return LIBREPSHEET_OK;</span>
+<span class="lineNum">      59 </span>            :   }
+<span class="lineNum">      60 </span>            : }
 </pre>
       </td>
     </tr>

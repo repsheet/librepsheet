@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">librepsheet
-   &#160;<span id="projectnumber">6.0.0</span>
+   &#160;<span id="projectnumber">6.1.0</span>
    </div>
    <div id="projectbrief">TheRepsheetcorelogiclibrary</div>
   </td>
@@ -126,7 +126,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">int</span> <a class="code" href="whitelist_8c.html#a925295d42d781fb2d3dbb16619bbe268">whitelist</a>(redisContext *context, <span class="keyword">const</span> <span class="keywordtype">char</span> *actor, <span class="keywordtype">int</span> type, <span class="keyword">const</span> <span class="keywordtype">char</span> *reason);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">int</span> <a class="code" href="marked_8c.html#aeaed5c2d2d202b98c80ad5cb612e9626">mark</a>(redisContext *context, <span class="keyword">const</span> <span class="keywordtype">char</span> *actor, <span class="keywordtype">int</span> type, <span class="keyword">const</span> <span class="keywordtype">char</span> *reason);</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">void</span> set_initial_whitelist_size(<span class="keywordtype">int</span> new_size);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> set_initial_blacklist_size(<span class="keywordtype">int</span> new_size);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="librepsheet_8c_html_ab8f2704972b7bcac3d19dc906b894649"><div class="ttname"><a href="librepsheet_8c.html#ab8f2704972b7bcac3d19dc906b894649">repsheet_connect</a></div><div class="ttdeci">redisContext * repsheet_connect(const char *host, int port, int connect_timeout, int read_timeout)</div><div class="ttdef"><b>Definition:</b> librepsheet.c:93</div></div>
 <div class="ttc" id="marked_8c_html_aeaed5c2d2d202b98c80ad5cb612e9626"><div class="ttname"><a href="marked_8c.html#aeaed5c2d2d202b98c80ad5cb612e9626">mark</a></div><div class="ttdeci">int mark(redisContext *context, const char *actor, int type, const char *reason)</div><div class="ttdef"><b>Definition:</b> marked.c:21</div></div>
 <div class="ttc" id="librepsheet_8c_html_ab7f34882a252ff795e6b349dbd91f1fe"><div class="ttname"><a href="librepsheet_8c.html#ab7f34882a252ff795e6b349dbd91f1fe">get_redis_context</a></div><div class="ttdeci">redisContext * get_redis_context(const char *host, int port, int timeout)</div><div class="ttdef"><b>Definition:</b> librepsheet.c:63</div></div>
@@ -134,12 +137,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="librepsheet_8c_html_aae284cfb64861f5921aae8f907c924bd"><div class="ttname"><a href="librepsheet_8c.html#aae284cfb64861f5921aae8f907c924bd">actor_status</a></div><div class="ttdeci">int actor_status(redisContext *context, const char *actor, int type, char *reason)</div><div class="ttdef"><b>Definition:</b> librepsheet.c:178</div></div>
 <div class="ttc" id="librepsheet_8c_html_a1d158856bf16b96a5379d081a0b0b492"><div class="ttname"><a href="librepsheet_8c.html#a1d158856bf16b96a5379d081a0b0b492">check_connection</a></div><div class="ttdeci">int check_connection(redisContext *context)</div><div class="ttdef"><b>Definition:</b> librepsheet.c:121</div></div>
 <div class="ttc" id="librepsheet_8c_html_a74e781dd4d2630d0ab65248496ea83fe"><div class="ttname"><a href="librepsheet_8c.html#a74e781dd4d2630d0ab65248496ea83fe">repsheet_reconnect</a></div><div class="ttdeci">int repsheet_reconnect(redisContext *context)</div><div class="ttdef"><b>Definition:</b> librepsheet.c:149</div></div>
-<div class="ttc" id="whitelist_8c_html_a925295d42d781fb2d3dbb16619bbe268"><div class="ttname"><a href="whitelist_8c.html#a925295d42d781fb2d3dbb16619bbe268">whitelist</a></div><div class="ttdeci">int whitelist(redisContext *context, const char *actor, int type, const char *reason)</div><div class="ttdef"><b>Definition:</b> whitelist.c:24</div></div>
-<div class="ttc" id="blacklist_8c_html_aa33e3b75212457ba0b23794e5f907d0c"><div class="ttname"><a href="blacklist_8c.html#aa33e3b75212457ba0b23794e5f907d0c">blacklist</a></div><div class="ttdeci">int blacklist(redisContext *context, const char *actor, int type, const char *reason)</div><div class="ttdef"><b>Definition:</b> blacklist.c:24</div></div>
+<div class="ttc" id="whitelist_8c_html_a925295d42d781fb2d3dbb16619bbe268"><div class="ttname"><a href="whitelist_8c.html#a925295d42d781fb2d3dbb16619bbe268">whitelist</a></div><div class="ttdeci">int whitelist(redisContext *context, const char *actor, int type, const char *reason)</div><div class="ttdef"><b>Definition:</b> whitelist.c:34</div></div>
+<div class="ttc" id="blacklist_8c_html_aa33e3b75212457ba0b23794e5f907d0c"><div class="ttname"><a href="blacklist_8c.html#aa33e3b75212457ba0b23794e5f907d0c">blacklist</a></div><div class="ttdeci">int blacklist(redisContext *context, const char *actor, int type, const char *reason)</div><div class="ttdef"><b>Definition:</b> blacklist.c:33</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 16 2015 09:08:30 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 9 2015 11:46:02 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

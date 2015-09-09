@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">librepsheet
-   &#160;<span id="projectnumber">6.0.0</span>
+   &#160;<span id="projectnumber">6.1.0</span>
    </div>
    <div id="projectbrief">TheRepsheetcorelogiclibrary</div>
   </td>
@@ -102,15 +102,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <span class="keywordtype">char</span> *address_string;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;} <a class="code" href="struct_c_i_d_r.html">CIDR</a>;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">int</span> <a class="code" href="cidr_8c.html#a1c5cf2cee3ecf87c5755fe08883ca35f">cidr_contains</a>(<span class="keywordtype">char</span> *block, <span class="keyword">const</span> <span class="keywordtype">char</span> *address);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define MAX_BLOCK_SIZE 200</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="cidr_8c_html_a1c5cf2cee3ecf87c5755fe08883ca35f"><div class="ttname"><a href="cidr_8c.html#a1c5cf2cee3ecf87c5755fe08883ca35f">cidr_contains</a></div><div class="ttdeci">int cidr_contains(char *block, const char *address)</div><div class="ttdef"><b>Definition:</b> cidr.c:25</div></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structrange.html">   15</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordtype">int</span> lower;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordtype">int</span> upper;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordtype">char</span> block[MAX_BLOCK_SIZE];</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;} <a class="code" href="structrange.html">range</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">int</span> <a class="code" href="cidr_8c.html#a4d02e20b96c851623c60a5bfea8d942e">cidr_contains</a>(<span class="keywordtype">char</span> *block, <span class="keywordtype">int</span> address);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">int</span> address_in_range(<a class="code" href="structrange.html">range</a> *r, <span class="keywordtype">int</span> ip);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">int</span> ip_address_to_integer(<span class="keyword">const</span> <span class="keywordtype">char</span> *address);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">int</span> block_to_range(<span class="keywordtype">char</span> *block, <a class="code" href="structrange.html">range</a> *<a class="code" href="structrange.html">range</a>);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="structrange_html"><div class="ttname"><a href="structrange.html">range</a></div><div class="ttdef"><b>Definition:</b> cidr.h:15</div></div>
+<div class="ttc" id="cidr_8c_html_a4d02e20b96c851623c60a5bfea8d942e"><div class="ttname"><a href="cidr_8c.html#a4d02e20b96c851623c60a5bfea8d942e">cidr_contains</a></div><div class="ttdeci">int cidr_contains(char *block, int ip)</div><div class="ttdef"><b>Definition:</b> cidr.c:45</div></div>
 <div class="ttc" id="struct_c_i_d_r_html"><div class="ttname"><a href="struct_c_i_d_r.html">CIDR</a></div><div class="ttdef"><b>Definition:</b> cidr.h:7</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 16 2015 09:08:30 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 9 2015 11:46:02 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

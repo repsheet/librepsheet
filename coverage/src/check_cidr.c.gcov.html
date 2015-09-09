@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - librepsheet test coverage - src/check_cidr.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">src</a> - check_cidr.c<span style="font-size: 80%;"> (source / <a href="check_cidr.c.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">librepsheet test coverage</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">26</td>
+            <td class="headerCovTableEntry">27</td>
+            <td class="headerCovTableEntryHi">96.3 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2015-09-09</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &lt;string.h&gt;</a>
+<span class="lineNum">       2 </span>            : #include &lt;time.h&gt;
+<span class="lineNum">       3 </span>            : #include &quot;repsheet.h&quot;
+<span class="lineNum">       4 </span>            : #include &quot;common.h&quot;
+<span class="lineNum">       5 </span>            : #include &quot;cidr.h&quot;
+<span class="lineNum">       6 </span>            : #include &quot;check_cidr.h&quot;
+<span class="lineNum">       7 </span>            : #include &quot;vector.h&quot;
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : 
+<a name="10"><span class="lineNum">      10 </span>            : int CACHED_FOR_SECONDS = 60;</a>
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span><span class="lineCov">         10 : int check_and_update_cache(redisContext *context, const char *actor, char *reason, char *list, expanding_vector *ev, time_t *last_update_time)</span>
+<span class="lineNum">      13 </span>            : {
+<span class="lineNum">      14 </span><span class="lineCov">         10 :   long current_seconds = time(NULL);</span>
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span><span class="lineCov">         10 :   if (*last_update_time + CACHED_FOR_SECONDS &lt; current_seconds) {</span>
+<span class="lineNum">      17 </span><span class="lineCov">          9 :     clear_expanding_vector(ev);</span>
+<span class="lineNum">      18 </span><span class="lineCov">          9 :     redisReply *listed = redisCommand(context, &quot;SMEMBERS repsheet:cidr:%s&quot;, list);</span>
+<span class="lineNum">      19 </span><span class="lineCov">          9 :     if (listed) {</span>
+<span class="lineNum">      20 </span><span class="lineCov">          9 :       if (listed-&gt;type == REDIS_REPLY_ARRAY) {</span>
+<span class="lineNum">      21 </span>            :         int i;
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span>            :         char *block;
+<span class="lineNum">      24 </span><span class="lineCov">          2 :         for(i = 0; i &lt; listed-&gt;elements; i++) {</span>
+<span class="lineNum">      25 </span><span class="lineCov">          2 :           block = strtok(listed-&gt;element[i]-&gt;str, &quot;:&quot;);</span>
+<span class="lineNum">      26 </span>            :           range range;
+<span class="lineNum">      27 </span><span class="lineCov">          2 :           int rc = block_to_range(block, &amp;range);</span>
+<span class="lineNum">      28 </span><span class="lineCov">          2 :           if (rc &gt;= 0) {</span>
+<span class="lineNum">      29 </span><span class="lineCov">          2 :             snprintf(range.block, MAX_BLOCK_SIZE, &quot;%s&quot;, block);</span>
+<span class="lineNum">      30 </span><span class="lineCov">          2 :             push_item(ev, &amp;range);</span>
+<span class="lineNum">      31 </span>            :           }
+<span class="lineNum">      32 </span>            :         }
+<span class="lineNum">      33 </span>            :       }
+<span class="lineNum">      34 </span><span class="lineCov">          9 :       freeReplyObject(listed);</span>
+<span class="lineNum">      35 </span>            :     } else {
+<span class="lineNum">      36 </span>            :       return DISCONNECTED;
+<span class="lineNum">      37 </span>            :     }
+<span class="lineNum">      38 </span>            :     //loaded ok, update the cache time
+<span class="lineNum">      39 </span><span class="lineCov">          9 :     *last_update_time = current_seconds;</span>
+<span class="lineNum">      40 </span>            :   }
+<span class="lineNum">      41 </span>            :   return 0;
+<span class="lineNum">      42 </span>            : }
+<a name="43"><span class="lineNum">      43 </span>            : </a>
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span><span class="lineCov">         10 : int checkCIDR(redisContext *context, const char *actor, char *reason, char *list, expanding_vector *ev, time_t *last_update_time)</span>
+<span class="lineNum">      46 </span>            : {
+<span class="lineNum">      47 </span><span class="lineCov">         10 :   int ip = ip_address_to_integer(actor);</span>
+<span class="lineNum">      48 </span><span class="lineCov">         10 :   if (ip == BAD_ADDRESS)</span>
+<span class="lineNum">      49 </span>            :     return BAD_ADDRESS;
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span><span class="lineCov">         10 :   int rc = check_and_update_cache(context, actor, reason, list, ev, last_update_time);</span>
+<span class="lineNum">      52 </span><span class="lineCov">         10 :   if (rc != 0) {</span>
+<span class="lineNum">      53 </span>            :     return rc;
+<span class="lineNum">      54 </span>            :   }
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :   for(int i = 0; i &lt; ev-&gt;size; ++ i) {</span>
+<span class="lineNum">      57 </span><span class="lineCov">          2 :     range *range = &amp;(ev-&gt;data[i]);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          2 :     if (address_in_range(range, ip) &gt; 0) {</span>
+<span class="lineNum">      59 </span><span class="lineCov">          2 :       redisReply* value = redisCommand(context, &quot;GET %s:repsheet:cidr:%s&quot;, range-&gt;block, list);</span>
+<span class="lineNum">      60 </span><span class="lineCov">          2 :       if (value) {</span>
+<span class="lineNum">      61 </span><span class="lineCov">          2 :         populate_reason(value, reason);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          2 :         freeReplyObject(value);</span>
+<span class="lineNum">      63 </span>            :       }
+<span class="lineNum">      64 </span>            :       return TRUE;
+<span class="lineNum">      65 </span>            :     }
+<span class="lineNum">      66 </span>            :   }
+<span class="lineNum">      67 </span>            :   return FALSE;
+<span class="lineNum">      68 </span>            : }
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">librepsheet
-   &#160;<span id="projectnumber">6.0.0</span>
+   &#160;<span id="projectnumber">6.1.0</span>
    </div>
    <div id="projectbrief">TheRepsheetcorelogiclibrary</div>
   </td>
@@ -87,7 +87,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">blacklist.c File Reference</div>  </div>
 </div><!--header-->
@@ -97,15 +98,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;common.h&quot;</code><br />
 <code>#include &quot;cidr.h&quot;</code><br />
 <code>#include &quot;blacklist.h&quot;</code><br />
+<code>#include &quot;check_cidr.h&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:abf4df1bc652e0a91ce7c155fb542c804"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abf4df1bc652e0a91ce7c155fb542c804"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_initial_blacklist_size</b> (int new_size)</td></tr>
+<tr class="separator:abf4df1bc652e0a91ce7c155fb542c804"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa33e3b75212457ba0b23794e5f907d0c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blacklist_8c.html#aa33e3b75212457ba0b23794e5f907d0c">blacklist</a> (redisContext *context, const char *actor, int type, const char *reason)</td></tr>
 <tr class="separator:aa33e3b75212457ba0b23794e5f907d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71687e9bfc47eaf367e997b40769ffd4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blacklist_8c.html#a71687e9bfc47eaf367e997b40769ffd4">is_ip_blacklisted</a> (redisContext *context, const char *actor, char *reason)</td></tr>
 <tr class="separator:a71687e9bfc47eaf367e997b40769ffd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d5e51dfaf389015f197cb693de93be5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blacklist_8c.html#a4d5e51dfaf389015f197cb693de93be5">is_user_blacklisted</a> (redisContext *context, const char *actor, char *reason)</td></tr>
 <tr class="separator:a4d5e51dfaf389015f197cb693de93be5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:aaa69140a289ab57d432de39692798af3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaa69140a289ab57d432de39692798af3"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>initial_blacklist_size</b> = 100</td></tr>
+<tr class="separator:aaa69140a289ab57d432de39692798af3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Aaron Bedra </dd></dl>
@@ -246,7 +257,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 16 2015 09:08:30 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 9 2015 11:46:02 for librepsheet by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>
