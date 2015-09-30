@@ -2,7 +2,6 @@
 #include "../src/repsheet.h"
 #include "../src/whitelist.h"
 #include "../src/blacklist.h"
-#include "../src/marked.h"
 #include "check.h"
 #include <unistd.h>
 
