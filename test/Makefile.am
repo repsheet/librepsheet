@@ -20,7 +20,6 @@ test_runner_SOURCES = librepsheet_test.c   \
                       ../src/whitelist.c   \
                       ../src/whitelist.h   \
                       ../src/marked.c      \
-                      ../src/marked.h      \
                       ../src/xff.c         \
                       ../src/xff.h         \
                       ../src/vector.h      \
