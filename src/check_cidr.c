@@ -7,13 +7,23 @@
 #include "vector.h"
 
 
-int CACHED_FOR_SECONDS = 60;
+unsigned int cache_expiry = 60;
+
+/**
+ * externally settable parameter
+ *
+ * @param new_expiry number of seconds for caching CIDR blocks before hitting redis again
+ */
+void set_cache_expiry(unsigned int new_expiry) 
+{
+  cache_expiry = new_expiry;
+}
 
 int check_and_update_cache(redisContext *context, const char *actor, char *reason, char *list, expanding_vector *ev, time_t *last_update_time)
 {
   long current_seconds = time(NULL);
 
-  if (*last_update_time + CACHED_FOR_SECONDS < current_seconds) {
+  if (*last_update_time + cache_expiry < current_seconds) {
     clear_expanding_vector(ev);
     redisReply *listed = redisCommand(context, "SMEMBERS repsheet:cidr:%s", list);
     if (listed) {

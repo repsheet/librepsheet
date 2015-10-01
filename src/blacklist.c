@@ -14,12 +14,16 @@
 
 int initial_blacklist_size = 100;
 
+/**
+ * externally settable parameter
+ *
+ * @param new_size initial size of expandable blacklist cache
+ */
+
 void set_initial_blacklist_size(int new_size) 
 {
   initial_blacklist_size = new_size;
 }
-
-
 /**
  * Adds the actor to the Repsheet blacklist
  *

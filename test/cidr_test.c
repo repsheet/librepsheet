@@ -5,10 +5,12 @@ START_TEST(class_c)
 {
   char *block = "10.0.0.0/24";
   int in = ip_address_to_integer("10.0.0.50");
+  int out = ip_address_to_integer("10.0.1.50");
   int lower = ip_address_to_integer("10.0.0.0");
   int upper = ip_address_to_integer("10.0.0.255");
 
   ck_assert_int_eq(1, cidr_contains(block, in));
+  ck_assert_int_eq(0, cidr_contains(block, out));
   ck_assert_int_eq(1, cidr_contains(block, lower));
   ck_assert_int_eq(1, cidr_contains(block, upper));
 }

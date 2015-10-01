@@ -38,5 +38,6 @@ int is_user_marked(redisContext *context, const char *actor, char *reason);
 
 void set_initial_whitelist_size(int new_size);
 void set_initial_blacklist_size(int new_size);
+void set_cache_expiry(unsigned int new_expiry);
 
 #endif
