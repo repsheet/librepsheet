@@ -5,8 +5,6 @@
 
 #include "config.h"
 #include "repsheet.h"
-#include "whitelist.h"
-#include "blacklist.h"
 
 /**
  * @file librepsheet.c
