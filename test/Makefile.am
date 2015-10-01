@@ -16,9 +16,7 @@ test_runner_SOURCES = librepsheet_test.c   \
                       ../src/check_cidr.h  \
                       ../src/check_cidr.c  \
                       ../src/blacklist.c   \
-                      ../src/blacklist.h   \
                       ../src/whitelist.c   \
-                      ../src/whitelist.h   \
                       ../src/marked.c      \
                       ../src/xff.c         \
                       ../src/xff.h         \
