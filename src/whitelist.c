@@ -3,7 +3,6 @@
 #include "common.h"
 #include "cidr.h"
 #include "check_cidr.h"
-#include "whitelist.h"
 
 
 /**
