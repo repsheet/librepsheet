@@ -1,5 +1,5 @@
 Name: repsheet
-Version: 6.1.0
+Version: 6.2.0
 Release: 1
 Summary: Core library
 License: ASL 2.0
@@ -72,6 +72,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc LICENSE
 
 %changelog
+* Mon Oct 05 2015 Aaron Bedra <aaron@aaronbedra.com> - 6.2.0-1
+- Interface fixes (Bump API current and age)
 * Wed Sep 09 2015 Aaron Bedra <aaron@aaronbedra.com> - 6.1.0-1
 - Cache CIDR conversions
 * Tue Jun 16 2015 Aaron Bedra <aaron@aaronbedra.com> - 6.0.0-1

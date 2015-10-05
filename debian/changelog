@@ -1,3 +1,9 @@
+librepsheet (6.2.0-1) unstable-security; urgency=medium
+
+  * Interface fixes (Bump ABI current and age)
+
+ -- Aaron Bedra <abedra@groupon>  Mon, 05 Oct 2015 13:22:08 -0500
+
 librepsheet (6.1.0-1) unstable-security; urgency=medium
 
   * Cache CIDR conversions
