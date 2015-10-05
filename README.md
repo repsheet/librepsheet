@@ -8,13 +8,22 @@ database operations, and X-Forwarded-For parsing code. This library
 will supply everything needed to implement Repsheet in any
 program. The current targets are the Apache and NGINX web servers.
 
+## Dependencies
+
+To install `librepsheet` from source, you will need:
+
+- automake
+- autoconf
+- libtool
+
+And in order to run the **tests**, you will need the `check` library.
+
+
 ## Installation
 
 You can install librepsheet using the Debian and RedHat packages
-provided with the official release. To install librepsheet from source
-you will need automake, autoconf, and libtool. The check library is
-necessary if you want to run the test suite. To use the library you
-will need a Redis server available. Once you have the dependencies
+provided with the official release. To use the library you
+will need a **Redis server** available. Once you have the dependencies
 installed, you can run the following to build and install librepsheet:
 
 ```sh
