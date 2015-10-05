@@ -1,3 +1,7 @@
+2015-10-05  Aaron Bedra  <aaron@aaronbedra.com>
+
+	* 6.2.0: Interface fixes (ABI current and age bump)
+
 2015-09-09  Aaron Bedra  <aaron@aaronbedra.com>
 
 	* 6.1.0: Cache CIDR block conversions
