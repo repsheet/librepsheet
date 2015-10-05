@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['whitelist',['whitelist',['../whitelist_8c.html#a925295d42d781fb2d3dbb16619bbe268',1,'whitelist.c']]],
-  ['whitelist_2ec',['whitelist.c',['../whitelist_8c.html',1,'']]]
+  ['set_5finitial_5fblacklist_5fsize',['set_initial_blacklist_size',['../blacklist_8c.html#abf4df1bc652e0a91ce7c155fb542c804',1,'blacklist.c']]]
 ];

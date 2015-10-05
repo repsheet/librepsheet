@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2015-09-09</td>
+            <td class="headerValue">2015-10-05</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -62,98 +62,97 @@
 <pre class="source">
 <a name="1"><span class="lineNum">       1 </span>            : #include &quot;repsheet.h&quot;</a>
 <span class="lineNum">       2 </span>            : #include &quot;common.h&quot;
-<span class="lineNum">       3 </span>            : #include &quot;marked.h&quot;
-<span class="lineNum">       4 </span>            : 
-<span class="lineNum">       5 </span>            : /**
-<span class="lineNum">       6 </span>            :  * @file marked.c
-<span class="lineNum">       7 </span>            :  * @author Aaron Bedra
-<span class="lineNum">       8 </span>            :  * @date 12/09/2014
-<span class="lineNum">       9 </span>            :  */
-<span class="lineNum">      10 </span>            : 
-<span class="lineNum">      11 </span>            : /**
-<span class="lineNum">      12 </span>            :  * Adds the actor to the Repsheet
-<span class="lineNum">      13 </span>            :  *
-<span class="lineNum">      14 </span>            :  * @param context the Redis connection
-<span class="lineNum">      15 </span>            :  * @param actor the actors user data or ip address
-<span class="lineNum">      16 </span>            :  * @param type IP or USER
-<span class="lineNum">      17 </span>            :  * @reason string to describe the reason for marking
-<span class="lineNum">      18 </span>            :  *
-<a name="19"><span class="lineNum">      19 </span>            :  * @returns an integer result</a>
-<span class="lineNum">      20 </span>            :  */
-<span class="lineNum">      21 </span><span class="lineCov">          4 : int mark(redisContext *context, const char *actor, int type, const char *reason)</span>
-<span class="lineNum">      22 </span>            : {
-<span class="lineNum">      23 </span>            :   redisReply *reply;
-<span class="lineNum">      24 </span>            : 
-<span class="lineNum">      25 </span><span class="lineCov">          4 :   switch(type) {</span>
-<span class="lineNum">      26 </span>            :   case IP:
-<span class="lineNum">      27 </span><span class="lineCov">          2 :     return set_list(context, actor, &quot;ip&quot;, &quot;marked&quot;, reason);</span>
-<span class="lineNum">      28 </span>            :     break;
-<span class="lineNum">      29 </span>            :   case USER:
-<span class="lineNum">      30 </span><span class="lineCov">          2 :     return set_list(context, actor, &quot;user&quot;, &quot;marked&quot;, reason);</span>
-<span class="lineNum">      31 </span>            :     break;
-<span class="lineNum">      32 </span>            :   case BLOCK:
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     return set_block(context, actor, &quot;marked&quot;, reason);</span>
-<span class="lineNum">      34 </span>            :   default:
-<span class="lineNum">      35 </span>            :     return UNSUPPORTED;
-<span class="lineNum">      36 </span>            :     break;
-<span class="lineNum">      37 </span>            :   }
-<span class="lineNum">      38 </span>            : }
-<span class="lineNum">      39 </span>            : 
-<span class="lineNum">      40 </span>            : /**
-<span class="lineNum">      41 </span>            :  * Checks to see if an ip is on the Repsheet
-<span class="lineNum">      42 </span>            :  *
-<span class="lineNum">      43 </span>            :  * @param context the Redis connection
-<span class="lineNum">      44 </span>            :  * @param actor the IP address of the actor
-<span class="lineNum">      45 </span>            :  * @param reason returns the reason for marking.
-<span class="lineNum">      46 </span>            :  *
-<a name="47"><span class="lineNum">      47 </span>            :  * @returns TRUE if yes, FALSE if no, DISCONNECTED if error</a>
-<span class="lineNum">      48 </span>            :  */
-<span class="lineNum">      49 </span><span class="lineCov">          3 : int is_ip_marked(redisContext *context, const char *actor, char *reason)</span>
-<span class="lineNum">      50 </span>            : {
-<span class="lineNum">      51 </span>            :   redisReply *reply;
-<span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span><span class="lineCov">          3 :   reply = redisCommand(context, &quot;GET %s:repsheet:ip:marked&quot;, actor);</span>
-<span class="lineNum">      54 </span><span class="lineCov">          3 :   if (reply) {</span>
-<span class="lineNum">      55 </span><span class="lineCov">          3 :     if (reply-&gt;type == REDIS_REPLY_STRING) {</span>
-<span class="lineNum">      56 </span><span class="lineCov">          2 :       populate_reason(reply, reason);</span>
-<span class="lineNum">      57 </span><span class="lineCov">          2 :       freeReplyObject(reply);</span>
-<span class="lineNum">      58 </span><span class="lineCov">          2 :       return TRUE;</span>
-<span class="lineNum">      59 </span>            :     } else {
-<span class="lineNum">      60 </span><span class="lineCov">          1 :       freeReplyObject(reply);</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 :       return FALSE;</span>
-<span class="lineNum">      62 </span>            :     }
-<span class="lineNum">      63 </span>            :   } else {
-<span class="lineNum">      64 </span>            :     return DISCONNECTED;
-<span class="lineNum">      65 </span>            :   }
-<span class="lineNum">      66 </span>            : }
-<span class="lineNum">      67 </span>            : 
-<span class="lineNum">      68 </span>            : /**
-<span class="lineNum">      69 </span>            :  * Checks to see if a user is on the Repsheet
-<span class="lineNum">      70 </span>            :  *
-<span class="lineNum">      71 </span>            :  * @param context the Redis connection
-<span class="lineNum">      72 </span>            :  * @param actor the user
-<span class="lineNum">      73 </span>            :  * @param reason returns the reason for marking.
-<span class="lineNum">      74 </span>            :  *
-<a name="75"><span class="lineNum">      75 </span>            :  * @returns TRUE if yes, FALSE if no, DISCONNECTED if error</a>
-<span class="lineNum">      76 </span>            :  */
-<span class="lineNum">      77 </span><span class="lineCov">          3 : int is_user_marked(redisContext *context, const char *actor, char *reason)</span>
-<span class="lineNum">      78 </span>            : {
-<span class="lineNum">      79 </span>            :   redisReply *reply;
-<span class="lineNum">      80 </span>            : 
-<span class="lineNum">      81 </span><span class="lineCov">          3 :   reply = redisCommand(context, &quot;GET %s:repsheet:user:marked&quot;, actor);</span>
-<span class="lineNum">      82 </span><span class="lineCov">          3 :   if (reply) {</span>
-<span class="lineNum">      83 </span><span class="lineCov">          3 :     if (reply-&gt;type == REDIS_REPLY_STRING) {</span>
-<span class="lineNum">      84 </span><span class="lineCov">          2 :       populate_reason(reply, reason);</span>
-<span class="lineNum">      85 </span><span class="lineCov">          2 :       freeReplyObject(reply);</span>
-<span class="lineNum">      86 </span><span class="lineCov">          2 :       return TRUE;</span>
-<span class="lineNum">      87 </span>            :     } else {
-<span class="lineNum">      88 </span><span class="lineCov">          1 :       freeReplyObject(reply);</span>
-<span class="lineNum">      89 </span><span class="lineCov">          1 :       return FALSE;</span>
-<span class="lineNum">      90 </span>            :     }
-<span class="lineNum">      91 </span>            :   } else {
-<span class="lineNum">      92 </span>            :     return DISCONNECTED;
-<span class="lineNum">      93 </span>            :   }
-<span class="lineNum">      94 </span>            : }
+<span class="lineNum">       3 </span>            : 
+<span class="lineNum">       4 </span>            : /**
+<span class="lineNum">       5 </span>            :  * @file marked.c
+<span class="lineNum">       6 </span>            :  * @author Aaron Bedra
+<span class="lineNum">       7 </span>            :  * @date 12/09/2014
+<span class="lineNum">       8 </span>            :  */
+<span class="lineNum">       9 </span>            : 
+<span class="lineNum">      10 </span>            : /**
+<span class="lineNum">      11 </span>            :  * Adds the actor to the Repsheet
+<span class="lineNum">      12 </span>            :  *
+<span class="lineNum">      13 </span>            :  * @param context the Redis connection
+<span class="lineNum">      14 </span>            :  * @param actor the actors user data or ip address
+<span class="lineNum">      15 </span>            :  * @param type IP or USER
+<span class="lineNum">      16 </span>            :  * @reason string to describe the reason for marking
+<span class="lineNum">      17 </span>            :  *
+<a name="18"><span class="lineNum">      18 </span>            :  * @returns an integer result</a>
+<span class="lineNum">      19 </span>            :  */
+<span class="lineNum">      20 </span><span class="lineCov">          4 : int mark(redisContext *context, const char *actor, int type, const char *reason)</span>
+<span class="lineNum">      21 </span>            : {
+<span class="lineNum">      22 </span>            :   redisReply *reply;
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span><span class="lineCov">          4 :   switch(type) {</span>
+<span class="lineNum">      25 </span>            :   case IP:
+<span class="lineNum">      26 </span><span class="lineCov">          2 :     return set_list(context, actor, &quot;ip&quot;, &quot;marked&quot;, reason);</span>
+<span class="lineNum">      27 </span>            :     break;
+<span class="lineNum">      28 </span>            :   case USER:
+<span class="lineNum">      29 </span><span class="lineCov">          2 :     return set_list(context, actor, &quot;user&quot;, &quot;marked&quot;, reason);</span>
+<span class="lineNum">      30 </span>            :     break;
+<span class="lineNum">      31 </span>            :   case BLOCK:
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :     return set_block(context, actor, &quot;marked&quot;, reason);</span>
+<span class="lineNum">      33 </span>            :   default:
+<span class="lineNum">      34 </span>            :     return UNSUPPORTED;
+<span class="lineNum">      35 </span>            :     break;
+<span class="lineNum">      36 </span>            :   }
+<span class="lineNum">      37 </span>            : }
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span>            : /**
+<span class="lineNum">      40 </span>            :  * Checks to see if an ip is on the Repsheet
+<span class="lineNum">      41 </span>            :  *
+<span class="lineNum">      42 </span>            :  * @param context the Redis connection
+<span class="lineNum">      43 </span>            :  * @param actor the IP address of the actor
+<span class="lineNum">      44 </span>            :  * @param reason returns the reason for marking.
+<span class="lineNum">      45 </span>            :  *
+<a name="46"><span class="lineNum">      46 </span>            :  * @returns TRUE if yes, FALSE if no, DISCONNECTED if error</a>
+<span class="lineNum">      47 </span>            :  */
+<span class="lineNum">      48 </span><span class="lineCov">          3 : int is_ip_marked(redisContext *context, const char *actor, char *reason)</span>
+<span class="lineNum">      49 </span>            : {
+<span class="lineNum">      50 </span>            :   redisReply *reply;
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span><span class="lineCov">          3 :   reply = redisCommand(context, &quot;GET %s:repsheet:ip:marked&quot;, actor);</span>
+<span class="lineNum">      53 </span><span class="lineCov">          3 :   if (reply) {</span>
+<span class="lineNum">      54 </span><span class="lineCov">          3 :     if (reply-&gt;type == REDIS_REPLY_STRING) {</span>
+<span class="lineNum">      55 </span><span class="lineCov">          2 :       populate_reason(reply, reason);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          2 :       freeReplyObject(reply);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          2 :       return TRUE;</span>
+<span class="lineNum">      58 </span>            :     } else {
+<span class="lineNum">      59 </span><span class="lineCov">          1 :       freeReplyObject(reply);</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :       return FALSE;</span>
+<span class="lineNum">      61 </span>            :     }
+<span class="lineNum">      62 </span>            :   } else {
+<span class="lineNum">      63 </span>            :     return DISCONNECTED;
+<span class="lineNum">      64 </span>            :   }
+<span class="lineNum">      65 </span>            : }
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span>            : /**
+<span class="lineNum">      68 </span>            :  * Checks to see if a user is on the Repsheet
+<span class="lineNum">      69 </span>            :  *
+<span class="lineNum">      70 </span>            :  * @param context the Redis connection
+<span class="lineNum">      71 </span>            :  * @param actor the user
+<span class="lineNum">      72 </span>            :  * @param reason returns the reason for marking.
+<span class="lineNum">      73 </span>            :  *
+<a name="74"><span class="lineNum">      74 </span>            :  * @returns TRUE if yes, FALSE if no, DISCONNECTED if error</a>
+<span class="lineNum">      75 </span>            :  */
+<span class="lineNum">      76 </span><span class="lineCov">          3 : int is_user_marked(redisContext *context, const char *actor, char *reason)</span>
+<span class="lineNum">      77 </span>            : {
+<span class="lineNum">      78 </span>            :   redisReply *reply;
+<span class="lineNum">      79 </span>            : 
+<span class="lineNum">      80 </span><span class="lineCov">          3 :   reply = redisCommand(context, &quot;GET %s:repsheet:user:marked&quot;, actor);</span>
+<span class="lineNum">      81 </span><span class="lineCov">          3 :   if (reply) {</span>
+<span class="lineNum">      82 </span><span class="lineCov">          3 :     if (reply-&gt;type == REDIS_REPLY_STRING) {</span>
+<span class="lineNum">      83 </span><span class="lineCov">          2 :       populate_reason(reply, reason);</span>
+<span class="lineNum">      84 </span><span class="lineCov">          2 :       freeReplyObject(reply);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          2 :       return TRUE;</span>
+<span class="lineNum">      86 </span>            :     } else {
+<span class="lineNum">      87 </span><span class="lineCov">          1 :       freeReplyObject(reply);</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 :       return FALSE;</span>
+<span class="lineNum">      89 </span>            :     }
+<span class="lineNum">      90 </span>            :   } else {
+<span class="lineNum">      91 </span>            :     return DISCONNECTED;
+<span class="lineNum">      92 </span>            :   }
+<span class="lineNum">      93 </span>            : }
 </pre>
       </td>
     </tr>

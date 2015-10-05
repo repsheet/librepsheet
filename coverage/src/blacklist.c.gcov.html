@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2015-09-09</td>
+            <td class="headerValue">2015-10-05</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -65,115 +65,118 @@
 <span class="lineNum">       3 </span>            : #include &quot;common.h&quot;
 <span class="lineNum">       4 </span>            : #include &quot;cidr.h&quot;
 <span class="lineNum">       5 </span>            : 
-<span class="lineNum">       6 </span>            : #include &quot;blacklist.h&quot;
-<span class="lineNum">       7 </span>            : #include &quot;check_cidr.h&quot;
-<span class="lineNum">       8 </span>            : 
-<span class="lineNum">       9 </span>            : /**
-<span class="lineNum">      10 </span>            :  * @file blacklist.c
-<span class="lineNum">      11 </span>            :  * @author Aaron Bedra
-<span class="lineNum">      12 </span>            :  * @date 12/09/2014
-<span class="lineNum">      13 </span>            :  */
-<span class="lineNum">      14 </span>            : 
-<a name="15"><span class="lineNum">      15 </span>            : int initial_blacklist_size = 100;</a>
-<span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span><span class="lineNoCov">          0 : void set_initial_blacklist_size(int new_size) </span>
-<span class="lineNum">      18 </span>            : {
-<span class="lineNum">      19 </span><span class="lineNoCov">          0 :   initial_blacklist_size = new_size;</span>
-<span class="lineNum">      20 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">       6 </span>            : #include &quot;check_cidr.h&quot;
+<span class="lineNum">       7 </span>            : 
+<span class="lineNum">       8 </span>            : /**
+<span class="lineNum">       9 </span>            :  * @file blacklist.c
+<span class="lineNum">      10 </span>            :  * @author Aaron Bedra
+<span class="lineNum">      11 </span>            :  * @date 12/09/2014
+<span class="lineNum">      12 </span>            :  */
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : int initial_blacklist_size = 100;
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span>            : /**
+<span class="lineNum">      17 </span>            :  * externally settable parameter
+<span class="lineNum">      18 </span>            :  *
+<span class="lineNum">      19 </span>            :  * @param new_size initial size of expandable blacklist cache
+<a name="20"><span class="lineNum">      20 </span>            :  */</a>
 <span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span>            : /**
-<span class="lineNum">      24 </span>            :  * Adds the actor to the Repsheet blacklist
-<span class="lineNum">      25 </span>            :  *
-<span class="lineNum">      26 </span>            :  * @param context the Redis connection
-<span class="lineNum">      27 </span>            :  * @param actor the actors user data or ip address
-<span class="lineNum">      28 </span>            :  * @param type IP or USER
-<span class="lineNum">      29 </span>            :  * @reason string to describe the reason for blacklisting
-<span class="lineNum">      30 </span>            :  *
-<a name="31"><span class="lineNum">      31 </span>            :  * @returns an integer result</a>
-<span class="lineNum">      32 </span>            :  */
-<span class="lineNum">      33 </span><span class="lineCov">          6 : int blacklist(redisContext *context, const char *actor, int type, const char *reason)</span>
-<span class="lineNum">      34 </span>            : {
-<span class="lineNum">      35 </span>            :   redisReply *reply;
-<span class="lineNum">      36 </span>            : 
-<span class="lineNum">      37 </span><span class="lineCov">          6 :   switch(type) {</span>
-<span class="lineNum">      38 </span>            :   case IP:
-<span class="lineNum">      39 </span><span class="lineCov">          3 :     return set_list(context, actor, &quot;ip&quot;, &quot;blacklisted&quot;, reason);</span>
-<span class="lineNum">      40 </span>            :     break;
-<span class="lineNum">      41 </span>            :   case USER:
-<span class="lineNum">      42 </span><span class="lineCov">          2 :     return set_list(context, actor, &quot;user&quot;, &quot;blacklisted&quot;, reason);</span>
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 : void set_initial_blacklist_size(int new_size) </span>
+<span class="lineNum">      23 </span>            : {
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 :   initial_blacklist_size = new_size;</span>
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      26 </span>            : /**
+<span class="lineNum">      27 </span>            :  * Adds the actor to the Repsheet blacklist
+<span class="lineNum">      28 </span>            :  *
+<span class="lineNum">      29 </span>            :  * @param context the Redis connection
+<span class="lineNum">      30 </span>            :  * @param actor the actors user data or ip address
+<span class="lineNum">      31 </span>            :  * @param type IP or USER
+<span class="lineNum">      32 </span>            :  * @reason string to describe the reason for blacklisting
+<span class="lineNum">      33 </span>            :  *
+<a name="34"><span class="lineNum">      34 </span>            :  * @returns an integer result</a>
+<span class="lineNum">      35 </span>            :  */
+<span class="lineNum">      36 </span><span class="lineCov">          6 : int blacklist(redisContext *context, const char *actor, int type, const char *reason)</span>
+<span class="lineNum">      37 </span>            : {
+<span class="lineNum">      38 </span>            :   redisReply *reply;
+<span class="lineNum">      39 </span>            : 
+<span class="lineNum">      40 </span><span class="lineCov">          6 :   switch(type) {</span>
+<span class="lineNum">      41 </span>            :   case IP:
+<span class="lineNum">      42 </span><span class="lineCov">          3 :     return set_list(context, actor, &quot;ip&quot;, &quot;blacklisted&quot;, reason);</span>
 <span class="lineNum">      43 </span>            :     break;
-<span class="lineNum">      44 </span>            :   case BLOCK:
-<span class="lineNum">      45 </span><span class="lineCov">          1 :     return set_block(context, actor, &quot;blacklisted&quot;, reason);</span>
+<span class="lineNum">      44 </span>            :   case USER:
+<span class="lineNum">      45 </span><span class="lineCov">          2 :     return set_list(context, actor, &quot;user&quot;, &quot;blacklisted&quot;, reason);</span>
 <span class="lineNum">      46 </span>            :     break;
-<span class="lineNum">      47 </span>            :   default:
-<span class="lineNum">      48 </span>            :     return UNSUPPORTED;
+<span class="lineNum">      47 </span>            :   case BLOCK:
+<span class="lineNum">      48 </span><span class="lineCov">          1 :     return set_block(context, actor, &quot;blacklisted&quot;, reason);</span>
 <span class="lineNum">      49 </span>            :     break;
-<span class="lineNum">      50 </span>            :   }
-<span class="lineNum">      51 </span>            : }
-<span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span>            : 
-<span class="lineNum">      54 </span>            : 
-<span class="lineNum">      55 </span>            : /**
-<span class="lineNum">      56 </span>            :  * Checks to see if an ip is on the Repsheet blacklist
-<span class="lineNum">      57 </span>            :  *
-<span class="lineNum">      58 </span>            :  * @param context the Redis connection
-<span class="lineNum">      59 </span>            :  * @param actor the IP address of the actor
-<span class="lineNum">      60 </span>            :  * @param reason returns the reason for blacklisting.
-<span class="lineNum">      61 </span>            :  *
-<a name="62"><span class="lineNum">      62 </span>            :  * @returns TRUE if yes, FALSE if no, DISCONNECTED if error</a>
-<span class="lineNum">      63 </span>            :  */
-<span class="lineNum">      64 </span><span class="lineCov">          7 : int is_ip_blacklisted(redisContext *context, const char *actor, char *reason)</span>
-<span class="lineNum">      65 </span>            : {
-<span class="lineNum">      66 </span>            :   static expanding_vector *cidr_cache = NULL;
-<span class="lineNum">      67 </span>            :   static time_t cache_update_time = 0;
-<span class="lineNum">      68 </span>            : 
-<span class="lineNum">      69 </span><span class="lineCov">          7 :   redisReply *ip = redisCommand(context, &quot;GET %s:repsheet:ip:blacklisted&quot;, actor);</span>
-<span class="lineNum">      70 </span><span class="lineCov">          7 :   if (ip) {</span>
-<span class="lineNum">      71 </span><span class="lineCov">          7 :     if (ip-&gt;type == REDIS_REPLY_STRING) {</span>
-<span class="lineNum">      72 </span><span class="lineCov">          3 :       populate_reason(ip, reason);</span>
-<span class="lineNum">      73 </span><span class="lineCov">          3 :       freeReplyObject(ip);</span>
-<span class="lineNum">      74 </span><span class="lineCov">          3 :       return TRUE;</span>
-<span class="lineNum">      75 </span>            :     } else {
-<span class="lineNum">      76 </span><span class="lineCov">          4 :       freeReplyObject(ip);</span>
-<span class="lineNum">      77 </span>            :     }
-<span class="lineNum">      78 </span>            :   } else {
-<span class="lineNum">      79 </span>            :     return DISCONNECTED;
-<span class="lineNum">      80 </span>            :   }
-<span class="lineNum">      81 </span>            : 
-<span class="lineNum">      82 </span><span class="lineCov">          4 :   if (cidr_cache == NULL) {</span>
-<span class="lineNum">      83 </span><span class="lineCov">          4 :     cidr_cache = create_expanding_vector(initial_blacklist_size);</span>
-<span class="lineNum">      84 </span>            :   }
-<span class="lineNum">      85 </span><span class="lineCov">          4 :   return checkCIDR(context, actor, reason, &quot;blacklisted&quot;, cidr_cache, &amp;cache_update_time);</span>
-<span class="lineNum">      86 </span>            : }
-<span class="lineNum">      87 </span>            : 
-<span class="lineNum">      88 </span>            : /**
-<span class="lineNum">      89 </span>            :  * Checks to see if a user is on the Repsheet blacklist
-<span class="lineNum">      90 </span>            :  *
-<span class="lineNum">      91 </span>            :  * @param context the Redis connection
-<span class="lineNum">      92 </span>            :  * @param actor the user
-<span class="lineNum">      93 </span>            :  * @param reason returns the reason for blacklisting.
-<span class="lineNum">      94 </span>            :  *
-<a name="95"><span class="lineNum">      95 </span>            :  * @returns TRUE if yes, FALSE if no, DISCONNECTED if error</a>
-<span class="lineNum">      96 </span>            :  */
-<span class="lineNum">      97 </span><span class="lineCov">          4 : int is_user_blacklisted(redisContext *context, const char *actor, char *reason)</span>
-<span class="lineNum">      98 </span>            : {
-<span class="lineNum">      99 </span>            :   redisReply *reply;
-<span class="lineNum">     100 </span>            : 
-<span class="lineNum">     101 </span><span class="lineCov">          4 :   reply = redisCommand(context, &quot;GET %s:repsheet:user:blacklisted&quot;, actor);</span>
-<span class="lineNum">     102 </span><span class="lineCov">          4 :   if (reply) {</span>
-<span class="lineNum">     103 </span><span class="lineCov">          4 :     if (reply-&gt;type == REDIS_REPLY_STRING) {</span>
-<span class="lineNum">     104 </span><span class="lineCov">          2 :       populate_reason(reply, reason);</span>
-<span class="lineNum">     105 </span><span class="lineCov">          2 :       freeReplyObject(reply);</span>
-<span class="lineNum">     106 </span><span class="lineCov">          2 :       return TRUE;</span>
-<span class="lineNum">     107 </span>            :     } else {
+<span class="lineNum">      50 </span>            :   default:
+<span class="lineNum">      51 </span>            :     return UNSUPPORTED;
+<span class="lineNum">      52 </span>            :     break;
+<span class="lineNum">      53 </span>            :   }
+<span class="lineNum">      54 </span>            : }
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            : /**
+<span class="lineNum">      59 </span>            :  * Checks to see if an ip is on the Repsheet blacklist
+<span class="lineNum">      60 </span>            :  *
+<span class="lineNum">      61 </span>            :  * @param context the Redis connection
+<span class="lineNum">      62 </span>            :  * @param actor the IP address of the actor
+<span class="lineNum">      63 </span>            :  * @param reason returns the reason for blacklisting.
+<span class="lineNum">      64 </span>            :  *
+<a name="65"><span class="lineNum">      65 </span>            :  * @returns TRUE if yes, FALSE if no, DISCONNECTED if error</a>
+<span class="lineNum">      66 </span>            :  */
+<span class="lineNum">      67 </span><span class="lineCov">          7 : int is_ip_blacklisted(redisContext *context, const char *actor, char *reason)</span>
+<span class="lineNum">      68 </span>            : {
+<span class="lineNum">      69 </span>            :   static expanding_vector *cidr_cache = NULL;
+<span class="lineNum">      70 </span>            :   static time_t cache_update_time = 0;
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span><span class="lineCov">          7 :   redisReply *ip = redisCommand(context, &quot;GET %s:repsheet:ip:blacklisted&quot;, actor);</span>
+<span class="lineNum">      73 </span><span class="lineCov">          7 :   if (ip) {</span>
+<span class="lineNum">      74 </span><span class="lineCov">          7 :     if (ip-&gt;type == REDIS_REPLY_STRING) {</span>
+<span class="lineNum">      75 </span><span class="lineCov">          3 :       populate_reason(ip, reason);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          3 :       freeReplyObject(ip);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          3 :       return TRUE;</span>
+<span class="lineNum">      78 </span>            :     } else {
+<span class="lineNum">      79 </span><span class="lineCov">          4 :       freeReplyObject(ip);</span>
+<span class="lineNum">      80 </span>            :     }
+<span class="lineNum">      81 </span>            :   } else {
+<span class="lineNum">      82 </span>            :     return DISCONNECTED;
+<span class="lineNum">      83 </span>            :   }
+<span class="lineNum">      84 </span>            : 
+<span class="lineNum">      85 </span><span class="lineCov">          4 :   if (cidr_cache == NULL) {</span>
+<span class="lineNum">      86 </span><span class="lineCov">          4 :     cidr_cache = create_expanding_vector(initial_blacklist_size);</span>
+<span class="lineNum">      87 </span>            :   }
+<span class="lineNum">      88 </span><span class="lineCov">          4 :   return checkCIDR(context, actor, reason, &quot;blacklisted&quot;, cidr_cache, &amp;cache_update_time);</span>
+<span class="lineNum">      89 </span>            : }
+<span class="lineNum">      90 </span>            : 
+<span class="lineNum">      91 </span>            : /**
+<span class="lineNum">      92 </span>            :  * Checks to see if a user is on the Repsheet blacklist
+<span class="lineNum">      93 </span>            :  *
+<span class="lineNum">      94 </span>            :  * @param context the Redis connection
+<span class="lineNum">      95 </span>            :  * @param actor the user
+<span class="lineNum">      96 </span>            :  * @param reason returns the reason for blacklisting.
+<span class="lineNum">      97 </span>            :  *
+<a name="98"><span class="lineNum">      98 </span>            :  * @returns TRUE if yes, FALSE if no, DISCONNECTED if error</a>
+<span class="lineNum">      99 </span>            :  */
+<span class="lineNum">     100 </span><span class="lineCov">          4 : int is_user_blacklisted(redisContext *context, const char *actor, char *reason)</span>
+<span class="lineNum">     101 </span>            : {
+<span class="lineNum">     102 </span>            :   redisReply *reply;
+<span class="lineNum">     103 </span>            : 
+<span class="lineNum">     104 </span><span class="lineCov">          4 :   reply = redisCommand(context, &quot;GET %s:repsheet:user:blacklisted&quot;, actor);</span>
+<span class="lineNum">     105 </span><span class="lineCov">          4 :   if (reply) {</span>
+<span class="lineNum">     106 </span><span class="lineCov">          4 :     if (reply-&gt;type == REDIS_REPLY_STRING) {</span>
+<span class="lineNum">     107 </span><span class="lineCov">          2 :       populate_reason(reply, reason);</span>
 <span class="lineNum">     108 </span><span class="lineCov">          2 :       freeReplyObject(reply);</span>
-<span class="lineNum">     109 </span><span class="lineCov">          2 :       return FALSE;</span>
-<span class="lineNum">     110 </span>            :     }
-<span class="lineNum">     111 </span>            :   } else {
-<span class="lineNum">     112 </span>            :     return DISCONNECTED;
-<span class="lineNum">     113 </span>            :   }
-<span class="lineNum">     114 </span>            : }
+<span class="lineNum">     109 </span><span class="lineCov">          2 :       return TRUE;</span>
+<span class="lineNum">     110 </span>            :     } else {
+<span class="lineNum">     111 </span><span class="lineCov">          2 :       freeReplyObject(reply);</span>
+<span class="lineNum">     112 </span><span class="lineCov">          2 :       return FALSE;</span>
+<span class="lineNum">     113 </span>            :     }
+<span class="lineNum">     114 </span>            :   } else {
+<span class="lineNum">     115 </span>            :     return DISCONNECTED;
+<span class="lineNum">     116 </span>            :   }
+<span class="lineNum">     117 </span>            : }
 </pre>
       </td>
     </tr>
