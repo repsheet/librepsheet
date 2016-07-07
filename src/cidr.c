@@ -63,91 +63,96 @@ int address_in_range(range *r, int ip)
 
 int _string_to_cidr(CIDR *cidr, char *block)
 {
-  char dup[strlen(block) + 1];
-  char *value;
-  memcpy(dup, block, strlen(block) + 1);
+  CIDR tmpCIDR;
+  char *cursor = block;
+  int tmp_cursor = 0;
+  tmpCIDR.mask = -1;
+  tmpCIDR.address = -1;
+  tmpCIDR.address_string[0] = '\0';
 
-  cidr->address_string = NULL;
-  value = strtok(dup,"/");
-  if (value != NULL) {
-    cidr->address_string = value;
-    if (strlen(cidr->address_string) < 7 || strlen(cidr->address_string) > 16) { // 15?
-      return BAD_CIDR_BLOCK;
-    }
+  // copy the address portion into the tmpCIDR while we look for the '/'
+  // separator
+  while(*cursor != '/' && *cursor != '\0' &&
+    cursor - block < MAX_BLOCK_ADDRESS_STRING_SIZE)
+  {
+    tmpCIDR.address_string[tmp_cursor] = *cursor;
+    cursor++;
+    tmp_cursor++;
   }
 
-  value = strtok(NULL,"/");
-  if (value == NULL) {
-    return BAD_CIDR_BLOCK;
-  } else {
-    cidr->mask = strtol(value, 0, 10);
-    if (cidr->mask < 0 || cidr->mask > 32) {
+  // if we found the '/' separator, make sure the address string is long
+  // enough and not too long
+  if (*cursor == '/') {
+    tmpCIDR.address_string[tmp_cursor] = '\0';
+    if (tmp_cursor < 7 || tmp_cursor > 16) { // 15?
       return BAD_CIDR_BLOCK;
     }
-  }
 
-  if (cidr->address_string == NULL) {
-    return BAD_ADDRESS;
-  } else {
-    cidr->address = ip_address_to_integer(cidr->address_string);
-    if (cidr->address == BAD_ADDRESS) {
+    // now do the mask
+    cursor++; // move past the '/'
+    tmpCIDR.mask = strtol(cursor, 0, 10);
+    if (tmpCIDR.mask < 0 || tmpCIDR.mask > 32 || (tmpCIDR.mask == 0 && *cursor != '0')) {
+      return BAD_CIDR_BLOCK;
+    }
+
+    // now convert the address
+    tmpCIDR.address = ip_address_to_integer(tmpCIDR.address_string);
+    if (tmpCIDR.address == BAD_ADDRESS) {
       return BAD_ADDRESS;
     }
   }
+  else {
+    return BAD_CIDR_BLOCK;
+  }
 
+  memcpy(cidr, &tmpCIDR, sizeof(CIDR));
   return LIBREPSHEET_OK;
 }
 
 //TODO: make this a LONG, because it can give negative numbers.
-int ip_address_to_integer(const char *address)
+int ip_address_to_integer(const char *  address)
 {
-  char dup[strlen(address) + 1];
-  char *value;
-  memcpy(dup, address, strlen(address) + 1);
+  char tmp_string[MAX_BLOCK_ADDRESS_STRING_SIZE];
+  char *cursor = tmp_string;
+  long octet[4];
+  int octet_number = 0;
 
-  int first, second, third, fourth;
+  // make sure we're not overflowing any buffers
+  strncpy(tmp_string, address, MAX_BLOCK_ADDRESS_STRING_SIZE);
+  dup[MAX_BLOCK_ADDRESS_STRING_SIZE - 1] = '\0';
 
-  value = strtok(dup, ".");
-  if (value != NULL) {
-    first = strtol(value, 0, 10);
-  } else {
-    return BAD_ADDRESS;
-  }
+  // walk through the string parsing and verifying the octets one at a time
+  while (octet_number < 4){
+    char *cursor2 = cursor;
 
-  value = strtok(NULL, ".");
-  if (value != NULL) {
-    second = strtol(value, 0, 10);
-  } else {
-    return BAD_ADDRESS;
-  }
+    // walk cursor2 forward up to 3 char to the end of this octet
+    for (; *cursor2 != '.' && *cursor2 != '\0' &&
+      cursor2 - cursor < 4; cursor2++) {}
 
-  value = strtok(NULL, ".");
-  if (value != NULL) {
-    third = strtol(value, 0, 10);
-  } else {
-    return BAD_ADDRESS;
-  }
+    // if we found a delimiter and there's at least one char in the octet
+    // we can try to convert the octet
+    if ((*cursor2 == '.' || *cursor2 == '\0') && cursor2 - cursor > 0){
+      *cursor2 = '\0';
+      octets[octet_number] = strtol(cursor, 0, 10);
 
-  value = strtok(NULL, ".");
-  if (value != NULL) {
-    fourth = strtol(value, 0, 10);
-  } else {
-    return BAD_ADDRESS;
-  }
-
-  int i;
-  int octets[] = {first, second, third, fourth};
-
-  for (i = 0; i < 4; i++) {
-    if (octets[i] < 0 || octets[i] > 255) {
+      // if the octet value is between 0 and 255
+      if ((octets[octet_number] & ~0xFF) == 0){
+        octet_number++;
+        cursor = cursor2 + 1;
+      }
+      else {
+        return BAD_ADDRESS;
+      }
+    }
+    else {
       return BAD_ADDRESS;
     }
   }
 
-  int ip_integer = (first << 24)
-    | (second << 16)
-    | (third << 8)
-    | fourth;
+  int ip_integer = (octets[0] << 24)
+    | (octets[1] << 16)
+    | (octets[2] << 8)
+    | octets[3];
 
   return ip_integer;
 }
