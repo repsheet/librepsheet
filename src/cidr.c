@@ -114,12 +114,12 @@ int ip_address_to_integer(const char *  address)
 {
   char tmp_string[MAX_BLOCK_ADDRESS_STRING_SIZE];
   char *cursor = tmp_string;
-  long octet[4];
+  long octets[4];
   int octet_number = 0;
 
   // make sure we're not overflowing any buffers
   strncpy(tmp_string, address, MAX_BLOCK_ADDRESS_STRING_SIZE);
-  dup[MAX_BLOCK_ADDRESS_STRING_SIZE - 1] = '\0';
+  tmp_string[MAX_BLOCK_ADDRESS_STRING_SIZE - 1] = '\0';
 
   // walk through the string parsing and verifying the octets one at a time
   while (octet_number < 4){
