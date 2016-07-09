@@ -23,17 +23,20 @@ START_TEST(class_c_excludes)
   char *short_block = "0.0.0/24";
   char *bad_mask = "10.0.0.0/33";
   char *no_mask = "10.0.0.0";
+  char *single_block = "222.222.222.222/32";
 
   int in = ip_address_to_integer("10.0.0.50");
   int out = ip_address_to_integer("10.0.1.50");
   int too_large = ip_address_to_integer("10.0.0.257");
   int too_long = ip_address_to_integer("10.0.0.1024");
+  int longest_out = ip_address_to_integer("222.222.222.223");
 
   ck_assert_int_eq(BAD_CIDR_BLOCK, cidr_contains(bad_value, in));
   ck_assert_int_eq(BAD_CIDR_BLOCK, cidr_contains(short_block, in));
   ck_assert_int_eq(BAD_CIDR_BLOCK, cidr_contains(bad_mask, in));
   ck_assert_int_eq(BAD_CIDR_BLOCK, cidr_contains(no_mask, in));
 
+  ck_assert_int_eq(0, cidr_contains(single_block, longest_out));
   ck_assert_int_eq(0, cidr_contains(block, out));
   ck_assert_int_eq(BAD_ADDRESS, cidr_contains(block, too_large));
   ck_assert_int_eq(BAD_ADDRESS, cidr_contains(block, too_long));

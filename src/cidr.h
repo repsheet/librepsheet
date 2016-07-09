@@ -3,11 +3,12 @@
 
 #define BAD_ADDRESS -3
 #define BAD_CIDR_BLOCK -4
+#define MAX_BLOCK_ADDRESS_STRING_SIZE 16
 
 typedef struct {
   int address;
   int mask;
-  char *address_string;
+  char address_string[MAX_BLOCK_ADDRESS_STRING_SIZE];
 } CIDR;
 
 #define MAX_BLOCK_SIZE 200
