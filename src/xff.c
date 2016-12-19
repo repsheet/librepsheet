@@ -2,6 +2,11 @@
 #include <string.h>
 #include <arpa/inet.h>
 
+#if __FreeBSD__
+#include <sys/socket.n>
+#include <netinet/in.h>
+#endif
+
 #include "repsheet.h"
 #include "xff.h"
 
