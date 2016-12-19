@@ -1,3 +1,7 @@
+2016-12-18  Aaron Bedra  <aaron@aaronbedra.com>
+
+	* 6.2.1: FreeBSD support fixes
+
 2015-10-05  Aaron Bedra  <aaron@aaronbedra.com>
 
 	* 6.2.0: Interface fixes (ABI current and age bump)
