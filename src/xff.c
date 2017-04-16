@@ -3,7 +3,7 @@
 #include <arpa/inet.h>
 
 #if __FreeBSD__
-#include <sys/socket.n>
+#include <sys/socket.h>
 #include <netinet/in.h>
 #endif
 
